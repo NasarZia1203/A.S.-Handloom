@@ -6,8 +6,8 @@ const CustomDot = ({ onClick, ...rest }: any) => {
       className={active ? "custom-dot active" : "custom-dot"}
       onClick={onClick}
       style={{
-        width: active ? 18 : 10,
-        height: active ? 18 : 10,
+        width: active ? 10 : 5,
+        height: active ? 10 : 5,
         borderRadius: "50%",
         background: active ? "var(--color-primary)" : "#81002077" ,
         border: "none",

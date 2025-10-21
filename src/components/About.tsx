@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const About: React.FC = () => (
   <section id="about" className="section about">
@@ -7,11 +7,18 @@ const About: React.FC = () => (
       <div className="about-content">
         <div className="about-text">
           <p>
-            Founded in 2007, A S Handloom is based in Bhagalpur, Bihar - a renowned hub for fine handloom textiles. We specialize in creating exquisite sarees and premium fabrics including Linen, Silk, and Cotton, combining traditional craftsmanship with contemporary designs.
+            Founded in 2007, A S Handloom is based in Bhagalpur, Bihar - a
+            renowned hub for fine handloom textiles. We specialize in creating
+            exquisite sarees and premium fabrics including Linen, Silk, and
+            Cotton, combining traditional craftsmanship with contemporary
+            designs.
           </p>
           <p>
-            Our skilled artisans bring decades of expertise to every piece, ensuring that each product reflects the rich heritage of Indian handloom while meeting modern quality standards.
+            Our skilled artisans bring decades of expertise to every piece,
+            ensuring that each product reflects the rich heritage of Indian
+            handloom while meeting modern quality standards.
           </p>
+
           <div className="about-features">
             <div className="feature-card">
               <div className="feature-icon">
@@ -36,38 +43,41 @@ const About: React.FC = () => (
             </div>
           </div>
         </div>
-        <div className="about-image-grid" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', height: '820px', justifyContent: 'center' }}>
+
+        {/* ✅ Image Grid Section */}
+        <div
+          className="about-image-grid"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--space-16)",
+            height: "820px",
+            justifyContent: "center",
+          }}
+        >
           <div className="about-image" style={{ flex: 1 }}>
-            <div style={{
-              height: '400px',
-              background: 'linear-gradient(135deg, var(--color-primary), var(--color-gold))',
-              borderRadius: 'var(--radius-xl)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: 'var(--font-size-2xl)',
-              fontWeight: 'var(--font-weight-semibold)'
-            }}>
-              <i className="fas fa-industry" style={{ marginRight: 'var(--space-12)' }}></i>
-              Our Workshop
-            </div>
+            <img
+              src='/assets/ASHandloomWorkshop.webp'
+              alt="Our Workshop"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+                borderRadius: "var(--radius-xl)",
+              }}
+            />
           </div>
           <div className="about-image" style={{ flex: 1 }}>
-            <div style={{
-              height: '400px',
-              background: 'linear-gradient(135deg, var(--color-gold), var(--color-primary))',
-              borderRadius: 'var(--radius-xl)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: 'var(--font-size-2xl)',
-              fontWeight: 'var(--font-weight-semibold)'
-            }}>
-              <i className="fas fa-users" style={{ marginRight: 'var(--space-12)' }}></i>
-              Our Artisans
-            </div>
+            <img
+              src='/assets/ASHandloomOffice.webp'
+              alt="Our Artisans"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+                borderRadius: "var(--radius-xl)",
+              }}
+            />
           </div>
         </div>
       </div>

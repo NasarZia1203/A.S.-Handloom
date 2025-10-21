@@ -1,4 +1,4 @@
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import './App.css';
@@ -12,13 +12,12 @@ import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
 function App() {
-
   useEffect(() => {
-    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navLinks = document.getElementById('navLinks');
 
+    // Navbar scroll effect
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
         navbar?.classList.add('scrolled');
@@ -53,7 +52,7 @@ function App() {
         const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
         const target = href ? document.querySelector(href) : null;
         if (target) {
-          const offsetTop = (target as HTMLElement).offsetTop - 70; // Account for fixed navbar
+          const offsetTop = (target as HTMLElement).offsetTop - 70;
           window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'
@@ -76,12 +75,11 @@ function App() {
       });
     }, observerOptions);
 
-    // Observe all sections
     document.querySelectorAll('.section').forEach(section => {
       observer.observe(section);
     });
 
-    // Initialize Swiper for Saree Collection
+    // Initialize Swipers
     new Swiper('.saree-swiper', {
       slidesPerView: 1,
       spaceBetween: 20,
@@ -99,22 +97,12 @@ function App() {
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 32,
-        },
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 24 },
+        1024: { slidesPerView: 4, spaceBetween: 32 },
       }
     });
 
-    // Initialize Swiper for Fabric Collection
     new Swiper('.fabric-swiper', {
       slidesPerView: 1,
       spaceBetween: 20,
@@ -132,24 +120,15 @@ function App() {
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 24,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 32,
-        },
+        640: { slidesPerView: 2, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 24 },
+        1024: { slidesPerView: 4, spaceBetween: 32 },
       }
     });
 
     // Contact form handling
     const contactForm = document.getElementById('contactForm');
-    contactForm?.addEventListener('submit', function(e) {
+    contactForm?.addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(this as HTMLFormElement);
       const name = formData.get('name');
@@ -163,13 +142,23 @@ function App() {
       alert('Thank you for your message! You will be redirected to WhatsApp.');
     });
 
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
+    // ✅ Optimized Parallax effect
+    const hero = document.querySelector('.hero') as HTMLElement;
+    let ticking = false;
+
+    const handleParallax = () => {
       const scrolled = window.pageYOffset;
-      const hero = document.querySelector('.hero') as HTMLElement;
-      const rate = scrolled * -0.5;
+      const rate = scrolled * -0.3;
       if (hero) {
         hero.style.transform = `translateY(${rate}px)`;
+      }
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleParallax);
+        ticking = true;
       }
     });
 
@@ -178,8 +167,8 @@ function App() {
       document.body.classList.add('loaded');
     });
 
-    // Lazy loading for better performance
-    const lazyImages = document.querySelectorAll('img[data-src]');
+    // ✅ Lazy load (skip hero images)
+    const lazyImages = document.querySelectorAll('img[data-src]:not(.hero-bg-img)');
     const imageObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -192,7 +181,7 @@ function App() {
     });
     lazyImages.forEach(img => imageObserver.observe(img));
 
-    // Add scroll progress indicator
+    // Scroll progress bar
     const scrollProgress = document.createElement('div');
     scrollProgress.style.cssText = `
       position: fixed;
