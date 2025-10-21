@@ -1,3 +1,9 @@
+.hero-bg-img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
 /* Custom Carousel Dots */
 .custom-dot-list-style {
     display: flex;

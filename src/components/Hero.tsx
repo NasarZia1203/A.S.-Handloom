@@ -5,11 +5,13 @@ const images = [
   '/assets/images/herosec2.webp',
   '/assets/images/herosec3.webp'
 ];
+
 const Hero: React.FC = () => (
   <section id="home" className="hero hero-grid-bg">
     <div className="hero-bg-grid">
       {images.map((src, idx) => (
         <div className="hero-bg-cell" key={idx}>
+          {/* Removed lazy loading — hero images should load immediately */}
           <img src={src} alt="Hero background" className="hero-bg-img" />
           <div className="hero-bg-gradient" />
         </div>
