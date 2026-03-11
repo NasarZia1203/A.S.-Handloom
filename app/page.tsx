@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
@@ -16,38 +15,8 @@ export default function HomePage() {
       <Hero />
       <SectionAnimator />
       <About />
-      <Suspense
-        fallback={
-          <section className="section collections animate">
-            <div className="container-image">
-              <h2 className="section-title-saree">Saree Collection</h2>
-              <div className="collection-carousel">
-                <p style={{ textAlign: 'center', padding: '40px' }}>
-                  Loading sarees...
-                </p>
-              </div>
-            </div>
-          </section>
-        }
-      >
-        <SareeCollection />
-      </Suspense>
-      <Suspense
-        fallback={
-          <section className="section fabrics-collections animate">
-            <div className="container-image">
-              <h2 className="section-title-fabric">Fabric Collection</h2>
-              <div className="collection-carousel">
-                <p style={{ textAlign: 'center', padding: '40px' }}>
-                  Loading fabrics...
-                </p>
-              </div>
-            </div>
-          </section>
-        }
-      >
-        <FabricCollection />
-      </Suspense>
+      <SareeCollection />
+      <FabricCollection />
       <Contact />
       <Footer />
       <WhatsAppFloat />

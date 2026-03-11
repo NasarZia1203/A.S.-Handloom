@@ -1,22 +1,41 @@
 import { NextResponse } from 'next/server'
 import { createServerClient } from '@/lib/supabase/server'
 
-// GET — public, returns active products
-export async function GET() {
+// GET — public, returns active products with optional filtering
+export async function GET(request: Request) {
   const supabase = await createServerClient()
-  const { data, error } = await supabase
+  const { searchParams } = new URL(request.url)
+  
+  const category = searchParams.get('category')
+  const limit = searchParams.get('limit')
+  
+  let query = supabase
     .from('products')
-    .select('*')
+    .select('*', { count: 'exact' })
     .eq('is_active', true)
-    .order('category', { ascending: true })
-    .order('sort_order', { ascending: true })
+  
+  // Apply category filter if provided
+  if (category) {
+    query = query.eq('category', category)
+  }
+  
+  query = query.order('sort_order', { ascending: true })
+  
+  const { data, error, count } = await query
 
   if (error) {
     console.error('Product fetch error:', error)
     return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 })
   }
 
-  return NextResponse.json(data)
+  // Apply limit if provided
+  const limitNum = limit ? parseInt(limit, 10) : undefined
+  const products = limitNum && data ? data.slice(0, limitNum) : data
+
+  return NextResponse.json({ 
+    products: products || [], 
+    total: count || 0 
+  })
 }
 
 // POST — protected (middleware checks auth), creates product
