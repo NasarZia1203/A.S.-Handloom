@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 
 export default function AdminLoginPage() {
@@ -404,7 +405,7 @@ export default function AdminLoginPage() {
               textAlign: 'center',
             }}
           >
-            <a
+            <Link
               href="/"
               style={{
                 color: 'rgba(255, 255, 255, 0.5)',
@@ -418,7 +419,7 @@ export default function AdminLoginPage() {
             >
               <i className="fas fa-arrow-left"></i>
               Back to Website
-            </a>
+            </Link>
           </div>
         </div>
       </div>
