@@ -67,7 +67,7 @@ code {
 }
 /* Saree Carousel Custom Styles */
 .saree-carousel-item {
-    margin: 0 16px;
+    margin: 0;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
@@ -76,6 +76,8 @@ code {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .saree-carousel-placeholder {
@@ -96,6 +98,7 @@ code {
     object-fit: cover;
     border-radius: 18px;
     box-shadow: none;
+    display: block;
 }
 
 .saree-carousel-watermark {
@@ -112,7 +115,7 @@ code {
 /* Fabric Carousel Custom Styles */
 
 .fabric-carousel-item {
-    margin: 0 16px;
+    margin: 0;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
@@ -122,6 +125,8 @@ code {
     align-items: center;
     justify-content: center;
     position: relative;
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .fabric-carousel-placeholder {
@@ -174,6 +179,7 @@ code {
     object-fit: cover;
     border-radius: 18px;
     box-shadow: none;
+    display: block;
 }
 
 .fabric-carousel-watermark {

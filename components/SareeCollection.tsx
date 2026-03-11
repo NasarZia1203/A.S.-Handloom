@@ -12,6 +12,11 @@ export default async function SareeCollection() {
     .eq('is_active', true)
     .order('sort_order')
 
+  console.log('[SareeCollection] Fetched sarees:', sarees?.length || 0)
+  if (sarees?.length) {
+    console.log('[SareeCollection] First saree:', sarees[0])
+  }
+
   // Limit to 10 items for carousel
   const displayedSarees = (sarees as Product[])?.slice(0, 10) || []
   const totalSarees = sarees?.length || 0

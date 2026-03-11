@@ -17,6 +17,7 @@ export default function ProductCarousel({
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    console.log(`[${variant}] Component mounted, items:`, items.length)
     setMounted(true)
     const handleResize = () => {
       const width = window.innerWidth
@@ -35,6 +36,7 @@ export default function ProductCarousel({
   }, [])
 
   if (items.length === 0) {
+    console.log(`[${variant}] No items to display`)
     return (
       <p style={{ textAlign: 'center', padding: '40px', color: 'var(--color-text-secondary)' }}>
         No {variant === 'saree' ? 'sarees' : 'fabrics'} available at the moment.
@@ -42,7 +44,12 @@ export default function ProductCarousel({
     )
   }
 
-  if (!mounted) return null
+  if (!mounted) {
+    console.log(`[${variant}] Not mounted yet, returning null`)
+    return null
+  }
+
+  console.log(`[${variant}] Rendering carousel. CurrentIndex: ${currentIndex}, VisibleCount: ${visibleCount}, Items: ${items.length}`)
   const maxIndex = Math.max(0, items.length - visibleCount)
 
   const goToPrevious = () => {
@@ -66,36 +73,42 @@ export default function ProductCarousel({
           gap: '16px',
           overflowX: 'hidden',
           overflow: 'hidden',
+          minHeight: '350px',
+          width: '100%',
+          position: 'relative',
         }}
       >
-        {items.slice(currentIndex, currentIndex + visibleCount).map((item) => (
-          <div
-            className={`collection-item ${variant}-carousel-item`}
-            key={item.id}
-            style={{
-              flex: `0 0 calc(100% / ${visibleCount} - ${(16 * (visibleCount - 1)) / visibleCount}px)`,
-              transition: 'all 0.3s ease',
-            }}
-          >
-            <div className={`collection-placeholder ${variant}-carousel-placeholder`}>
-              <img
-                src={item.image_url}
-                alt={item.description}
-                className={`${variant}-carousel-img`}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <img
-                src="/assets/logowatermark.png"
-                alt="AS Handloom watermark"
-                className={`${variant}-carousel-watermark`}
-              />
+        {items.slice(currentIndex, currentIndex + visibleCount).map((item) => {
+          console.log(`[${variant}] Rendering item:`, item.id, item.image_url)
+          return (
+            <div
+              className={`collection-item ${variant}-carousel-item`}
+              key={item.id}
+              style={{
+                flex: `0 0 calc(100% / ${visibleCount} - ${(16 * (visibleCount - 1)) / visibleCount}px)`,
+                transition: 'all 0.3s ease',
+              }}
+            >
+              <div className={`collection-placeholder ${variant}-carousel-placeholder`}>
+                <img
+                  src={item.image_url}
+                  alt={item.description}
+                  className={`${variant}-carousel-img`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <img
+                  src="/assets/logowatermark.png"
+                  alt="AS Handloom watermark"
+                  className={`${variant}-carousel-watermark`}
+                />
+              </div>
+              <div className={`${variant}-carousel-overlay`}>
+                <div className="product-code">{item.code}</div>
+                <div className="product-description">{item.description}</div>
+              </div>
             </div>
-            <div className={`${variant}-carousel-overlay`}>
-              <div className="product-code">{item.code}</div>
-              <div className="product-description">{item.description}</div>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* Navigation Arrows */}

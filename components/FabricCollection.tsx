@@ -12,6 +12,11 @@ export default async function FabricCollection() {
     .eq('is_active', true)
     .order('sort_order')
 
+  console.log('[FabricCollection] Fetched fabrics:', fabrics?.length || 0)
+  if (fabrics?.length) {
+    console.log('[FabricCollection] First fabric:', fabrics[0])
+  }
+
   // Limit to 10 items for carousel
   const displayedFabrics = (fabrics as Product[])?.slice(0, 10) || []
   const totalFabrics = fabrics?.length || 0
