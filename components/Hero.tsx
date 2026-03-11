@@ -26,7 +26,15 @@ export default function Hero() {
         ))}
       </div>
       <div className="hero-content">
-        <div className="hero-logo">A S</div>
+        <div className="hero-logo">
+          <Image 
+            src="/assets/images/logo.png" 
+            alt="A S Handloom Logo" 
+            width={120}
+            height={120}
+            style={{ borderRadius: '50%', objectFit: 'cover' }}
+          />
+        </div>
         <h1>A S Handloom</h1>
         <p className="hero-tagline">Weaving Heritage Since 2007</p>
         <a href="#sarees" className="hero-cta">
