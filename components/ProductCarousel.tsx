@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import type { Product } from '@/lib/types'
 
 interface ProductCarouselProps {
@@ -33,7 +34,7 @@ export default function ProductCarousel({
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [variant, items.length])
 
   if (items.length === 0) {
     console.log(`[${variant}] No items to display`)
@@ -90,15 +91,20 @@ export default function ProductCarousel({
               }}
             >
               <div className={`collection-placeholder ${variant}-carousel-placeholder`}>
-                <img
+                <Image
                   src={item.image_url}
                   alt={item.description}
+                  fill
                   className={`${variant}-carousel-img`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  style={{ objectFit: 'cover' }}
+                  priority={false}
+                  sizes="(max-width: 464px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <img
+                <Image
                   src="/assets/logowatermark.png"
                   alt="AS Handloom watermark"
+                  width={48}
+                  height={48}
                   className={`${variant}-carousel-watermark`}
                 />
               </div>

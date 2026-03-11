@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import type { Product } from '@/lib/types'
 
 interface ProductTableProps {
@@ -105,12 +106,12 @@ export default function ProductTable({ initialProducts }: ProductTableProps) {
             <tr key={product.id}>
               <td style={tdStyle}>
                 {product.image_url ? (
-                  <img
+                  <Image
                     src={product.image_url}
                     alt={product.code}
+                    width={60}
+                    height={60}
                     style={{
-                      width: '60px',
-                      height: '60px',
                       objectFit: 'cover',
                       borderRadius: '6px',
                     }}

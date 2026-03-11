@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function About() {
   return (
     <section id="about" className="section about">
@@ -53,28 +55,28 @@ export default function About() {
               justifyContent: 'center',
             }}
           >
-            <div className="about-image" style={{ flex: 1 }}>
-              <img
+            <div className="about-image" style={{ flex: 1, position: 'relative' }}>
+              <Image
                 src="/assets/ASHandloomWorkshop.webp"
                 alt="Our Workshop"
+                fill
                 style={{
-                  width: '100%',
-                  height: '400px',
                   objectFit: 'cover',
                   borderRadius: 'var(--radius-xl)',
                 }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <div className="about-image" style={{ flex: 1 }}>
-              <img
+            <div className="about-image" style={{ flex: 1, position: 'relative' }}>
+              <Image
                 src="/assets/ASHandloomOffice.webp"
                 alt="Our Artisans"
+                fill
                 style={{
-                  width: '100%',
-                  height: '400px',
                   objectFit: 'cover',
                   borderRadius: 'var(--radius-xl)',
                 }}
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>

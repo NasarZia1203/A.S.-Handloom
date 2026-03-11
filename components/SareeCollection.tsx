@@ -22,7 +22,7 @@ export default async function SareeCollection() {
   const totalSarees = sarees?.length || 0
 
   return (
-    <section id="sarees" className="section collections">
+    <section id="sarees" className="section collections animate">
       <div className="container-image">
         <h2 className="section-title-saree">Saree Collection</h2>
         <div className="collection-carousel">

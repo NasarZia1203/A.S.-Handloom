@@ -22,7 +22,7 @@ export default async function FabricCollection() {
   const totalFabrics = fabrics?.length || 0
 
   return (
-    <section id="fabrics" className="section fabrics-collections ">
+    <section id="fabrics" className="section fabrics-collections animate">
       <div className="container-image">
         <h2 className="section-title-fabric">Fabric Collection</h2>
         <div className="collection-carousel">

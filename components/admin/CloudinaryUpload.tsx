@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useCallback } from 'react'
+import Image from 'next/image'
 
 declare global {
   interface Window {
@@ -80,12 +81,12 @@ export default function CloudinaryUpload({
       </button>
       {currentImageUrl && (
         <div style={{ marginTop: '12px' }}>
-          <img
+          <Image
             src={currentImageUrl}
             alt="Product preview"
+            width={120}
+            height={120}
             style={{
-              width: '120px',
-              height: '120px',
               objectFit: 'cover',
               borderRadius: '8px',
               border: '2px solid #e5e7eb',

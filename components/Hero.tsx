@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const images = [
   '/assets/images/herosec1.webp',
   '/assets/images/herosec2.webp',
@@ -10,7 +12,15 @@ export default function Hero() {
       <div className="hero-bg-grid">
         {images.map((src, idx) => (
           <div className="hero-bg-cell" key={idx}>
-            <img src={src} alt="Hero background" className="hero-bg-img" />
+            <Image 
+              src={src} 
+              alt="Hero background" 
+              className="hero-bg-img"
+              fill
+              priority={idx === 0}
+              sizes="(max-width: 1024px) 100vw, 33vw"
+              style={{ objectFit: 'cover' }}
+            />
             <div className="hero-bg-gradient" />
           </div>
         ))}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/client'
 import type { Product } from '@/lib/types'
 
@@ -121,17 +122,14 @@ export default function AllSareesPage() {
                     backgroundColor: '#e9ecef',
                   }}
                 >
-                  <img
+                  <Image
                     src={product.image_url}
                     alt={product.description}
+                    fill
                     style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '100%',
                       objectFit: 'cover',
                     }}
+                    sizes="(max-width: 464px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
                 <div style={{ padding: '16px' }}>

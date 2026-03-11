@@ -32,6 +32,13 @@ code {
     vertical-align: middle;
     display: inline-block;
 }
+
+/* Collection carousel container - ensure visibility */
+.collection-carousel {
+    width: 100%;
+    display: block;
+    min-height: 350px;
+}
 .saree-carousel-item {
     position: relative;
 }
