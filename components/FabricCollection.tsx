@@ -1,6 +1,7 @@
 import { createServerClient } from '@/lib/supabase/server'
 import type { Product } from '@/lib/types'
 import ProductCarousel from '@/components/ProductCarousel'
+import FabricTypeButton from '@/components/FabricTypeButton'
 import Link from 'next/link'
 
 export default async function FabricCollection() {
@@ -15,6 +16,12 @@ export default async function FabricCollection() {
   // Limit to 10 items for carousel
   const displayedFabrics = (fabrics as Product[])?.slice(0, 10) || []
   const totalFabrics = fabrics?.length || 0
+
+  const fabricTypes = [
+    { name: 'Linen', icon: 'fas fa-wind', color: '#FF9800' },
+    { name: 'Silk', icon: 'fas fa-gem', color: '#E91E63' },
+    { name: 'Cotton', icon: 'fas fa-leaf', color: '#4CAF50' }
+  ]
 
   return (
     <section id="fabrics" className="section fabrics-collections animate">
@@ -60,48 +67,13 @@ export default async function FabricCollection() {
           marginBottom: '40px',
           flexWrap: 'wrap'
         }}>
-          {[
-            { name: 'Linen', icon: 'fas fa-wind', color: '#FF9800' },
-            { name: 'Silk', icon: 'fas fa-gem', color: '#E91E63' },
-            { name: 'Cotton', icon: 'fas fa-leaf', color: '#4CAF50' }
-          ].map((type, index) => (
-            <div 
+          {fabricTypes.map((type, index) => (
+            <FabricTypeButton 
               key={index}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '14px 24px',
-                background: 'white',
-                borderRadius: '50px',
-                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
-                border: '1px solid var(--color-border)',
-                cursor: 'pointer',
-                transition: 'all 0.25s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.08)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.04)'
-              }}
-            >
-              <div style={{
-                width: '36px',
-                height: '36px',
-                borderRadius: '50%',
-                background: `${type.color}15`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: type.color
-              }}>
-                <i className={type.icon}></i>
-              </div>
-              <span style={{ fontWeight: 600, fontSize: '15px' }}>{type.name}</span>
-            </div>
+              name={type.name}
+              icon={type.icon}
+              color={type.color}
+            />
           ))}
         </div>
 
