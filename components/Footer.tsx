@@ -18,12 +18,6 @@ const socialLinks = [
   { icon: 'fab fa-whatsapp', href: 'https://wa.me/919798141494', label: 'WhatsApp' }
 ]
 
-const features = [
-  { icon: 'fas fa-truck', text: 'Pan India Shipping' },
-  { icon: 'fas fa-shield-alt', text: 'Authentic Products' },
-  { icon: 'fas fa-hand-holding-heart', text: 'Artisan Made' }
-]
-
 export default function Footer() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
@@ -38,53 +32,6 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      {/* Features Bar */}
-      <div style={{
-        maxWidth: '1200px',
-        margin: '-60px auto 48px',
-        padding: '0 24px',
-        position: 'relative',
-        zIndex: 10
-      }}>
-        <div style={{
-          background: 'linear-gradient(135deg, #E91E63 0%, #FF5722 100%)',
-          borderRadius: '20px',
-          padding: '24px 40px',
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '24px',
-          boxShadow: '0 20px 50px -15px rgba(233, 30, 99, 0.4)'
-        }}>
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                color: 'white'
-              }}
-            >
-              <div style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '18px'
-              }}>
-                <i className={feature.icon}></i>
-              </div>
-              <span style={{ fontWeight: 600, fontSize: '15px' }}>{feature.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="container">
         <div className="footer-content">
           {/* Brand Section */}
