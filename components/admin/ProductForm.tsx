@@ -68,6 +68,7 @@ export default function ProductForm({ initialValues, productId }: ProductFormPro
       }
 
       router.push('/admin/dashboard')
+      router.refresh()
     } catch (err: any) {
       setError(err.message || 'Something went wrong')
     } finally {
