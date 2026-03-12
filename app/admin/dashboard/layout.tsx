@@ -22,9 +22,11 @@ export default async function DashboardLayout({
       <main
         style={{
           flex: 1,
+          marginLeft: '280px',
           background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
           overflowY: 'auto',
           position: 'relative',
+          height: '100vh',
         }}
       >
         {/* Header Bar */}

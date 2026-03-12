@@ -205,8 +205,8 @@ export default async function DashboardPage() {
         </div>
 
         {/* Table Container */}
-        <div style={{ padding: '0' }}>
-          <ProductTable initialProducts={productList} />
+        <div style={{ padding: '24px 28px' }}>
+          <ProductTable />
         </div>
       </div>
     </div>

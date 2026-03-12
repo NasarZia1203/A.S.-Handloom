@@ -27,13 +27,17 @@ export default function AdminSidebar() {
     <aside
       style={{
         width: '280px',
+        height: '100vh',
         background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)',
         color: '#fff',
         display: 'flex',
         flexDirection: 'column',
         flexShrink: 0,
-        position: 'relative',
-        overflow: 'hidden',
+        position: 'fixed',
+        left: 0,
+        top: 0,
+        overflowY: 'auto',
+        overflowX: 'hidden',
       }}
     >
       {/* Background Pattern */}
@@ -209,40 +213,9 @@ export default function AdminSidebar() {
           borderTop: '1px solid rgba(255, 255, 255, 0.06)',
           position: 'relative',
           zIndex: 1,
+          marginTop: 'auto',
         }}
       >
-        {/* Quick Stats */}
-        <div
-          style={{
-            background: 'rgba(255, 255, 255, 0.03)',
-            borderRadius: '12px',
-            padding: '16px',
-            marginBottom: '16px',
-            border: '1px solid rgba(255, 255, 255, 0.06)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-            <i className="fas fa-chart-pie" style={{ color: '#E91E63', fontSize: '14px' }}></i>
-            <span style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.6)' }}>Quick Stats</span>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '18px', fontWeight: 700, color: 'white' }}>--</div>
-              <div style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.4)' }}>Products</div>
-            </div>
-            <div
-              style={{
-                width: '1px',
-                background: 'rgba(255, 255, 255, 0.1)',
-              }}
-            />
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '18px', fontWeight: 700, color: '#10b981' }}>--</div>
-              <div style={{ fontSize: '10px', color: 'rgba(255, 255, 255, 0.4)' }}>Active</div>
-            </div>
-          </div>
-        </div>
-
         {/* Sign Out Button */}
         <button
           onClick={handleSignOut}

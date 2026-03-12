@@ -8,18 +8,55 @@ export async function GET(request: Request) {
   
   const category = searchParams.get('category')
   const limit = searchParams.get('limit')
+  const admin = searchParams.get('admin') === 'true'
+  const page = parseInt(searchParams.get('page') || '1', 10)
+  const perPage = parseInt(searchParams.get('per_page') || '10', 10)
+  const search = searchParams.get('search') || ''
+  const sortBy = searchParams.get('sort_by') || 'sort_order'
+  const sortOrder = searchParams.get('sort_order') === 'desc' ? 'desc' : 'asc'
   
   let query = supabase
     .from('products')
     .select('*', { count: 'exact' })
-    .eq('is_active', true)
+  
+  // If not admin, only show active products
+  if (!admin) {
+    query = query.eq('is_active', true)
+  }
   
   // Apply category filter if provided
-  if (category) {
+  if (category && category !== 'all') {
     query = query.eq('category', category)
   }
   
-  query = query.order('sort_order', { ascending: true })
+  // Apply search filter if provided
+  if (search) {
+    query = query.or(`code.ilike.%${search}%,description.ilike.%${search}%`)
+  }
+  
+  // Apply sorting
+  query = query.order(sortBy, { ascending: sortOrder === 'asc' })
+  
+  // For non-paginated requests (public API), use limit
+  if (!admin) {
+    const limitNum = limit ? parseInt(limit, 10) : undefined
+    const { data, error, count } = await query
+
+    if (error) {
+      console.error('Product fetch error:', error)
+      return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 })
+    }
+
+    const products = limitNum && data ? data.slice(0, limitNum) : data
+    return NextResponse.json({ 
+      products: products || [], 
+      total: count || 0 
+    })
+  }
+  
+  // For admin dashboard, apply pagination
+  const offset = (page - 1) * perPage
+  query = query.range(offset, offset + perPage - 1)
   
   const { data, error, count } = await query
 
@@ -28,13 +65,15 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 })
   }
 
-  // Apply limit if provided
-  const limitNum = limit ? parseInt(limit, 10) : undefined
-  const products = limitNum && data ? data.slice(0, limitNum) : data
+  const totalPages = Math.ceil((count || 0) / perPage)
 
   return NextResponse.json({ 
-    products: products || [], 
-    total: count || 0 
+    products: data || [],
+    total: count || 0,
+    page,
+    perPage,
+    totalPages,
+    hasMore: page < totalPages
   })
 }
 
