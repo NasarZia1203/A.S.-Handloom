@@ -67,8 +67,8 @@ export default function ProductForm({ initialValues, productId }: ProductFormPro
         throw new Error(data.error || 'Failed to save product')
       }
 
-      router.push('/admin/dashboard')
       router.refresh()
+      router.push('/admin/dashboard')
     } catch (err: any) {
       setError(err.message || 'Something went wrong')
     } finally {

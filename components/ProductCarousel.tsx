@@ -41,12 +41,12 @@ export default function ProductCarousel({
   const maxIndex = Math.max(0, items.length - visibleCount)
 
   const goToPrevious = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1))
-  }, [maxIndex])
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - visibleCount))
+  }, [maxIndex, visibleCount])
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
-  }, [maxIndex])
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + visibleCount))
+  }, [maxIndex, visibleCount])
 
   // Auto-slide functionality
   useEffect(() => {
