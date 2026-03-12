@@ -11,6 +11,7 @@ interface ProductTableProps {
 
 export default function ProductTable({ initialProducts }: ProductTableProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts)
+  const [hoveredRow, setHoveredRow] = useState<string | null>(null)
   const router = useRouter()
 
   const handleDelete = async (id: string) => {
@@ -40,155 +41,267 @@ export default function ProductTable({ initialProducts }: ProductTableProps) {
     }
   }
 
-  const thStyle: React.CSSProperties = {
-    padding: '10px 12px',
-    textAlign: 'left',
-    borderBottom: '2px solid #e5e7eb',
-    fontSize: '12px',
-    fontWeight: '600',
-    color: '#6b7280',
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-  }
-
-  const tdStyle: React.CSSProperties = {
-    padding: '10px 12px',
-    borderBottom: '1px solid #f3f4f6',
-    fontSize: '14px',
-    verticalAlign: 'middle',
-  }
-
-  const btnStyle = (bg: string): React.CSSProperties => ({
-    padding: '4px 10px',
-    backgroundColor: bg,
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontSize: '12px',
-    fontWeight: '500',
-    marginRight: '4px',
-  })
-
   return (
-    <div
-      style={{
-        backgroundColor: '#fff',
-        borderRadius: '8px',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-        overflow: 'auto',
-      }}
-    >
+    <div style={{ overflow: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
-          <tr>
-            <th style={thStyle}>Image</th>
-            <th style={thStyle}>Code</th>
-            <th style={thStyle}>Description</th>
-            <th style={thStyle}>Category</th>
-            <th style={thStyle}>Active</th>
-            <th style={thStyle}>Sort</th>
-            <th style={thStyle}>Actions</th>
+          <tr style={{ background: '#f8fafc' }}>
+            {['Product', 'Code', 'Category', 'Status', 'Sort', 'Actions'].map((header) => (
+              <th
+                key={header}
+                style={{
+                  padding: '14px 20px',
+                  textAlign: 'left',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  color: '#64748b',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  borderBottom: '1px solid #e2e8f0',
+                }}
+              >
+                {header}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {products.length === 0 && (
             <tr>
               <td
-                colSpan={7}
-                style={{ ...tdStyle, textAlign: 'center', padding: '32px', color: '#9ca3af' }}
+                colSpan={6}
+                style={{
+                  textAlign: 'center',
+                  padding: '60px 32px',
+                  color: '#94a3b8',
+                }}
               >
-                No products found. Add your first product.
+                <div
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 87, 34, 0.1))',
+                    borderRadius: '16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 16px',
+                  }}
+                >
+                  <i className="fas fa-box-open" style={{ fontSize: '24px', color: '#E91E63' }}></i>
+                </div>
+                <div style={{ fontSize: '16px', fontWeight: 600, color: '#475569', marginBottom: '4px' }}>
+                  No products yet
+                </div>
+                <div style={{ fontSize: '14px' }}>Add your first product to get started</div>
               </td>
             </tr>
           )}
           {products.map((product) => (
-            <tr key={product.id}>
-              <td style={tdStyle}>
-                {product.image_url ? (
-                  <Image
-                    src={product.image_url}
-                    alt={product.code}
-                    width={60}
-                    height={60}
-                    style={{
-                      objectFit: 'cover',
-                      borderRadius: '6px',
-                    }}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      backgroundColor: '#e5e7eb',
-                      borderRadius: '6px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '10px',
-                      color: '#9ca3af',
-                    }}
-                  >
-                    No img
+            <tr
+              key={product.id}
+              onMouseEnter={() => setHoveredRow(product.id)}
+              onMouseLeave={() => setHoveredRow(null)}
+              style={{
+                background: hoveredRow === product.id ? '#fafafa' : 'white',
+                transition: 'background 0.2s ease',
+              }}
+            >
+              {/* Product with Image */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  {product.image_url ? (
+                    <div
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        border: '2px solid #f1f5f9',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Image
+                        src={product.image_url}
+                        alt={product.code}
+                        width={56}
+                        height={56}
+                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: '56px',
+                        height: '56px',
+                        backgroundColor: '#f1f5f9',
+                        borderRadius: '12px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <i className="fas fa-image" style={{ color: '#cbd5e1', fontSize: '18px' }}></i>
+                    </div>
+                  )}
+                  <div style={{ minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        color: '#475569',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: '200px',
+                      }}
+                    >
+                      {product.description || 'No description'}
+                    </div>
                   </div>
-                )}
+                </div>
               </td>
-              <td style={{ ...tdStyle, fontWeight: '600' }}>{product.code}</td>
-              <td style={{ ...tdStyle, maxWidth: '200px' }}>
-                {product.description}
-              </td>
-              <td style={tdStyle}>
+
+              {/* Code */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
                 <span
                   style={{
-                    padding: '2px 8px',
-                    borderRadius: '9999px',
-                    fontSize: '11px',
-                    fontWeight: '600',
-                    backgroundColor:
-                      product.category === 'saree' ? '#fef3c7' : '#dbeafe',
-                    color:
-                      product.category === 'saree' ? '#92400e' : '#1e40af',
+                    padding: '6px 12px',
+                    background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.08), rgba(255, 87, 34, 0.08))',
+                    borderRadius: '8px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    color: '#E91E63',
+                    fontFamily: 'monospace',
+                  }}
+                >
+                  {product.code}
+                </span>
+              </td>
+
+              {/* Category */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
+                <span
+                  style={{
+                    padding: '6px 14px',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    textTransform: 'capitalize',
+                    background: product.category === 'saree' 
+                      ? 'linear-gradient(135deg, #fef3c7, #fef9c3)'
+                      : 'linear-gradient(135deg, #dbeafe, #e0f2fe)',
+                    color: product.category === 'saree' ? '#b45309' : '#1d4ed8',
+                    border: product.category === 'saree' 
+                      ? '1px solid #fcd34d'
+                      : '1px solid #93c5fd',
                   }}
                 >
                   {product.category}
                 </span>
               </td>
-              <td style={tdStyle}>
+
+              {/* Status */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
                 <button
-                  onClick={() =>
-                    handleToggleActive(product.id, product.is_active)
-                  }
+                  onClick={() => handleToggleActive(product.id, product.is_active)}
                   style={{
-                    padding: '4px 10px',
-                    backgroundColor: product.is_active ? '#10b981' : '#ef4444',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '4px',
+                    padding: '6px 14px',
+                    background: product.is_active
+                      ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))'
+                      : 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05))',
+                    color: product.is_active ? '#059669' : '#dc2626',
+                    border: product.is_active
+                      ? '1px solid rgba(16, 185, 129, 0.3)'
+                      : '1px solid rgba(239, 68, 68, 0.3)',
+                    borderRadius: '20px',
                     cursor: 'pointer',
                     fontSize: '12px',
-                    fontWeight: '500',
+                    fontWeight: 600,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    transition: 'all 0.2s ease',
                   }}
                 >
+                  <div
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: product.is_active ? '#10b981' : '#ef4444',
+                    }}
+                  />
                   {product.is_active ? 'Active' : 'Inactive'}
                 </button>
               </td>
-              <td style={tdStyle}>{product.sort_order}</td>
-              <td style={tdStyle}>
-                <button
-                  onClick={() =>
-                    router.push(`/admin/dashboard/products/${product.id}`)
-                  }
-                  style={btnStyle('#3b82f6')}
+
+              {/* Sort */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '32px',
+                    height: '32px',
+                    background: '#f1f5f9',
+                    borderRadius: '8px',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    color: '#475569',
+                  }}
                 >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(product.id)}
-                  style={btnStyle('#ef4444')}
-                >
-                  Delete
-                </button>
+                  {product.sort_order}
+                </span>
+              </td>
+
+              {/* Actions */}
+              <td style={{ padding: '16px 20px', borderBottom: '1px solid #f1f5f9' }}>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button
+                    onClick={() => router.push(`/admin/dashboard/products/${product.id}`)}
+                    style={{
+                      padding: '8px 14px',
+                      background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 4px 10px -4px rgba(59, 130, 246, 0.4)',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <i className="fas fa-edit" style={{ fontSize: '11px' }}></i>
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(product.id)}
+                    style={{
+                      padding: '8px 14px',
+                      background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 4px 10px -4px rgba(239, 68, 68, 0.4)',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <i className="fas fa-trash" style={{ fontSize: '11px' }}></i>
+                    Delete
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
