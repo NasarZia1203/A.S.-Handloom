@@ -320,11 +320,11 @@ export default function Contact({
                     flexShrink: 0,
                   }}
                 >
-                  <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: '#1C1917' }}>
+                  <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: '#FFFFFF' }}>
                     <img
-                      src="/assets/images/linen-galaxy-boutique.png"
-                      alt="Linen Galaxy Flagship Boutique"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      src="/assets/images/linen-galaxy-logo-white-bg.png"
+                      alt="Linen Galaxy — House Of Pure Linen And Silk"
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '6px' }}
                     />
                   </div>
                 </div>

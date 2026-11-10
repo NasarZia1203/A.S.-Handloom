@@ -67,18 +67,18 @@ export default function AdminSidebar() {
               height: '46px',
               borderRadius: '50%',
               overflow: 'hidden',
-              background: '#1C1917',
-              border: '2px solid rgba(212, 175, 55, 0.6)',
+              background: '#FFFFFF',
+              border: '2px solid rgba(212, 175, 55, 0.75)',
               boxShadow: '0 4px 12px rgba(212, 175, 55, 0.25)',
               flexShrink: 0,
             }}
           >
             <Image
-              src="/assets/images/linen-galaxy-boutique.png"
+              src="/assets/images/linen-galaxy-logo-white-bg.png"
               alt="Linen Galaxy"
               fill
               sizes="46px"
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'contain', padding: '4px' }}
             />
           </div>
           <div>

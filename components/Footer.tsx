@@ -112,12 +112,24 @@ export default function Footer() {
 
           {/* Column 3: About The Store */}
           <div>
-            <div style={{ position: 'relative', width: '135px', height: '48px', marginBottom: '14px' }}>
+            <div
+              style={{
+                position: 'relative',
+                width: '68px',
+                height: '68px',
+                marginBottom: '14px',
+                background: '#FFFFFF',
+                borderRadius: '8px',
+                border: '1px solid #ECE7E1',
+                padding: '4px',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+              }}
+            >
               <Image
-                src="/assets/images/linen-galaxy-logo.jpg"
-                alt="Linen Galaxy"
+                src="/assets/images/linen-galaxy-logo-white-bg.png"
+                alt="Linen Galaxy — House Of Pure Linen And Silk"
                 fill
-                sizes="135px"
+                sizes="68px"
                 style={{ objectFit: 'contain' }}
               />
             </div>

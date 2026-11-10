@@ -35,9 +35,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/browser-tab-logo.svg', type: 'image/svg+xml' },
-      { url: '/assets/images/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/assets/images/linen-galaxy-logo-white-bg.png', sizes: '1024x1024', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
-    apple: [{ url: '/assets/images/logo.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
     title: 'A S Handloom | Premium Handloom Sarees & Fabrics',

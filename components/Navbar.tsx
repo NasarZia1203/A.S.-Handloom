@@ -257,7 +257,7 @@ export default function Navbar() {
               </span>
               <span
                 style={{
-                  fontSize: '0.58rem',
+                  fontSize: '0.6rem',
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   color: '#8A7B6D',
@@ -265,7 +265,7 @@ export default function Navbar() {
                   marginTop: '3px',
                 }}
               >
-                WHERE STYLE MEETS HERITAGE • BY A S HANDLOOM
+                HOUSE OF PURE LINEN AND SILK
               </span>
             </Link>
           </div>
@@ -694,7 +694,7 @@ export default function Navbar() {
                   LINEN GALAXY
                 </div>
                 <div style={{ fontSize: '0.52rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8A7B6D', marginTop: '2px' }}>
-                  BY A S HANDLOOM
+                  HOUSE OF PURE LINEN AND SILK
                 </div>
               </div>
               <button
