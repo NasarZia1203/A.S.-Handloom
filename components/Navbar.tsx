@@ -367,10 +367,12 @@ export default function Navbar() {
               top: '100%',
               left: 0,
               right: 0,
+              maxHeight: 'calc(100vh - 90px)',
+              overflowY: 'auto',
               background: '#FFFFFF',
               borderBottom: '1px solid #ECE7E1',
               boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08)',
-              padding: '36px 0 42px',
+              padding: '24px 0 28px',
               zIndex: 999,
               animation: 'megaFadeIn 0.2s ease',
             }}
@@ -381,11 +383,12 @@ export default function Navbar() {
                 margin: '0 auto',
                 padding: '0 28px',
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr 1.15fr 0.95fr 0.95fr',
-                gap: '32px',
+                gridTemplateColumns: '1fr 1.05fr 1fr 1.05fr 1.25fr',
+                gap: '24px',
+                alignItems: 'start',
               }}
             >
-              {/* Column 1: Dynamic Sarees Category */}
+              {/* Column 1: Handloom Sarees */}
               <div>
                 {(() => {
                   const sareeCat = categories.find((c) => c.slug === 'saree')
@@ -399,7 +402,7 @@ export default function Navbar() {
                       >
                         <span style={colHeaderStyle}>{sareeCat.name.toUpperCase()}</span>
                       </Link>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                         <Link
                           href={`/products?category=${sareeCat.slug}`}
                           onClick={() => setShopMegaOpen(false)}
@@ -424,7 +427,7 @@ export default function Navbar() {
                 })()}
               </div>
 
-              {/* Column 2: Dynamic Running Fabrics Category */}
+              {/* Column 2: Pure Running Fabrics */}
               <div>
                 {(() => {
                   const fabricCat = categories.find((c) => c.slug === 'fabric')
@@ -438,7 +441,7 @@ export default function Navbar() {
                       >
                         <span style={colHeaderStyle}>{fabricCat.name.toUpperCase()}</span>
                       </Link>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                         <Link
                           href={`/products?category=${fabricCat.slug}`}
                           onClick={() => setShopMegaOpen(false)}
@@ -463,11 +466,11 @@ export default function Navbar() {
                 })()}
               </div>
 
-              {/* Column 3: All Other Dynamic Categories (Chadar, Gamcha, Suit Salwar, etc.) */}
+              {/* Column 3: Suits, Salwars & Dupattas */}
               <div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {categories
-                    .filter((c) => c.slug !== 'saree' && c.slug !== 'fabric' && c.is_active !== false)
+                    .filter((c) => (c.slug === 'suit-salwar' || c.slug === 'dupatta-stole') && c.is_active !== false)
                     .map((cat) => (
                       <div key={cat.id}>
                         <Link
@@ -477,7 +480,7 @@ export default function Navbar() {
                         >
                           <span style={colHeaderStyle}>{cat.name.toUpperCase()}</span>
                         </Link>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                           <Link
                             href={`/products?category=${cat.slug}`}
                             onClick={() => setShopMegaOpen(false)}
@@ -502,91 +505,144 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Column 4: Promo Card 1 (Shop Sarees) */}
-              <Link
-                href="/products?category=saree"
-                onClick={() => setShopMegaOpen(false)}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  textDecoration: 'none',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'relative',
-                    width: '100%',
-                    paddingBottom: '135%',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                    background: '#F5F5F4',
-                    marginBottom: '12px',
-                  }}
-                >
-                  <Image
-                    src="/assets/images/sarees/saree1.webp"
-                    alt="Shop Handloom Sarees"
-                    fill
-                    sizes="(max-width: 1480px) 240px, 300px"
-                    style={{ objectFit: 'cover' }}
-                  />
+              {/* Column 4: Heritage Weaves (Chadar, Gamcha, Lungis & Other) */}
+              <div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  {categories
+                    .filter(
+                      (c) =>
+                        ['chadar', 'gamcha', 'lungi'].includes(c.slug) ||
+                        (!['saree', 'fabric', 'suit-salwar', 'dupatta-stole', 'chadar', 'gamcha', 'lungi'].includes(c.slug) &&
+                          c.is_active !== false)
+                    )
+                    .map((cat) => (
+                      <div key={cat.id}>
+                        <Link
+                          href={`/products?category=${cat.slug}`}
+                          onClick={() => setShopMegaOpen(false)}
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <span style={colHeaderStyle}>{cat.name.toUpperCase()}</span>
+                        </Link>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                          <Link
+                            href={`/products?category=${cat.slug}`}
+                            onClick={() => setShopMegaOpen(false)}
+                            className="mega-link"
+                            style={{ fontWeight: 600 }}
+                          >
+                            All {cat.name}
+                          </Link>
+                          {(cat.types || []).map((type, idx) => (
+                            <Link
+                              key={idx}
+                              href={`/products?category=${cat.slug}&type=${encodeURIComponent(type.toLowerCase())}`}
+                              onClick={() => setShopMegaOpen(false)}
+                              className="mega-link"
+                            >
+                              {type}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
                 </div>
-                <div
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: '#1C1917',
-                    textAlign: 'center',
-                  }}
-                >
-                  SHOP SAREES
-                </div>
-              </Link>
+              </div>
 
-              {/* Column 5: Promo Card 2 (Shop Fabrics) */}
-              <Link
-                href="/products?category=fabric"
-                onClick={() => setShopMegaOpen(false)}
+              {/* Column 5: Dual Compact Promo Showcase Cards */}
+              <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  textDecoration: 'none',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '12px',
                 }}
               >
-                <div
+                {/* Promo Card 1: Shop Sarees */}
+                <Link
+                  href="/products?category=saree"
+                  onClick={() => setShopMegaOpen(false)}
                   style={{
-                    position: 'relative',
-                    width: '100%',
-                    paddingBottom: '135%',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                    background: '#F5F5F4',
-                    marginBottom: '12px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textDecoration: 'none',
                   }}
                 >
-                  <Image
-                    src="/assets/images/sarees/saree2.webp"
-                    alt="Shop Running Fabrics"
-                    fill
-                    sizes="(max-width: 1480px) 240px, 300px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <div
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      aspectRatio: '3 / 4',
+                      borderRadius: '4px',
+                      overflow: 'hidden',
+                      background: '#F5F5F4',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    <Image
+                      src="/assets/images/sarees/saree1.webp"
+                      alt="Shop Handloom Sarees"
+                      fill
+                      sizes="(max-width: 1480px) 180px, 220px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '10.5px',
+                      fontWeight: 700,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: '#1C1917',
+                      textAlign: 'center',
+                    }}
+                  >
+                    SHOP SAREES
+                  </div>
+                </Link>
+
+                {/* Promo Card 2: Shop Fabrics */}
+                <Link
+                  href="/products?category=fabric"
+                  onClick={() => setShopMegaOpen(false)}
                   style={{
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: '#1C1917',
-                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    textDecoration: 'none',
                   }}
                 >
-                  SHOP FABRICS
-                </div>
-              </Link>
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      aspectRatio: '3 / 4',
+                      borderRadius: '4px',
+                      overflow: 'hidden',
+                      background: '#F5F5F4',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    <Image
+                      src="/assets/images/fabrics/fabric1.webp"
+                      alt="Shop Pure Running Fabrics"
+                      fill
+                      sizes="(max-width: 1480px) 180px, 220px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '10.5px',
+                      fontWeight: 700,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: '#1C1917',
+                      textAlign: 'center',
+                    }}
+                  >
+                    SHOP FABRICS
+                  </div>
+                </Link>
+              </div>
 
             </div>
           </div>
