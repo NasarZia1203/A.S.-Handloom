@@ -1,0 +1,231 @@
+{
+  "settings": {
+    "show_prices": true,
+    "show_wholesale_prices": true,
+    "currency_symbol": "₹",
+    "business_name": "Linen Galaxy",
+    "parent_company": "A S Handloom",
+    "shop_image_url": "/assets/images/linen-galaxy-boutique.png",
+    "shop_address": "85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004",
+    "shop_description": "Flagship Handloom & Linen Textile Store in the Silk City of India. Retail boutique & wholesale depot for pure sarees, linen shirting/suiting, and heritage pit-loom fabrics.",
+    "proprietor": "MD RAZA ALAM",
+    "contact_phone": "+91 9430908657",
+    "whatsapp_number": "+91 9798141494",
+    "gstin": "10AJXPA6956B1ZD",
+    "homepage_sections": [
+      {
+        "id": "hero",
+        "heading": "Linen Galaxy — The Handloom Textile Store",
+        "subheading": "A Flagship Store by A S Handloom • Bhagalpur Silk City, Bihar",
+        "is_enabled": true,
+        "sort_order": 1
+      },
+      {
+        "id": "ndd",
+        "heading": "⚡ Next Day Dispatch (NDD)",
+        "subheading": "Ready-in-Loft Handloom Sarees & Fabrics Dispatched Within 24 Hours Across India",
+        "is_enabled": true,
+        "sort_order": 2
+      },
+      {
+        "id": "sale",
+        "heading": "Clearance & Flash Sale",
+        "subheading": "Special discounts on handloom sarees, linen fabrics, and traditional weaves",
+        "is_enabled": true,
+        "sort_order": 3
+      },
+      {
+        "id": "sarees",
+        "heading": "Handcrafted Saree Masterpieces",
+        "subheading": "Pure Desi Silk, Linen, Moonga, Organza, Viscose & Kota Handloom Sarees",
+        "category_slug": "saree",
+        "is_enabled": true,
+        "sort_order": 4
+      },
+      {
+        "id": "fabrics",
+        "heading": "Pure Running Fabrics & Yardage",
+        "subheading": "Linen Shirting (80/70/60 LEA), Suiting (25/33 LEA), Cotton, Khadi, Ghiccha & Tussar",
+        "category_slug": "fabric",
+        "is_enabled": true,
+        "sort_order": 5
+      },
+      {
+        "id": "chadar-gamcha",
+        "heading": "Bhagalpuri Chadar, Gamcha & Lungis",
+        "subheading": "Famous Bhagalpuri DULL Chadar, Modi Gamcha, Resham Gamcha & Pure Lungis",
+        "category_slug": "chadar",
+        "is_enabled": true,
+        "sort_order": 6
+      },
+      {
+        "id": "suit-salwar",
+        "heading": "Banarsi Suit Salwar & Dupattas",
+        "subheading": "Artisanal 3-Piece Unstitched Suits & Handloom Zari Dupattas",
+        "category_slug": "suit-salwar",
+        "is_enabled": true,
+        "sort_order": 7
+      },
+      {
+        "id": "about",
+        "heading": "The 200-Year Pit-Loom Lineage",
+        "subheading": "Linen Galaxy by A S Handloom • Under MD RAZA ALAM (Proprietor)",
+        "is_enabled": true,
+        "sort_order": 8
+      },
+      {
+        "id": "wholesale-retail",
+        "heading": "Wholesale Manufacturing & Direct Retail Delivery",
+        "subheading": "Two Channels • One Ancestral Pit-Loom Manufacturing House",
+        "is_enabled": true,
+        "sort_order": 9
+      },
+      {
+        "id": "contact",
+        "heading": "Online Order & Wholesale Inquiries",
+        "subheading": "Direct Tracked Doorstep Delivery Across India & Global Cargo",
+        "is_enabled": true,
+        "sort_order": 10
+      }
+    ],
+    "policies": {
+      "shipping-delivery": {
+        "title": "Shipping & Delivery Policy",
+        "last_updated": "November 2026",
+        "content": "At Linen Galaxy by A S Handloom, we take utmost care to ensure that your handloom sarees and fabric yardage reach you safely and promptly across India and abroad.\n\nDispatch Timeframe:\n• Next Day Dispatch (NDD) items: Packed and handed over to express courier partners within 24 hours of order confirmation.\n• Standard catalog weaves: Dispatched within 2 to 3 business days direct from our Bhagalpur loft.\n• Custom woven bulk rolls: Production timelines communicated directly upon loom scheduling.\n\nDelivery Estimates:\n• Metro Cities: 2 to 4 business days.\n• Rest of India: 4 to 6 business days.\n• Remote & Northeast Pincodes: 5 to 7 business days.\n\nTracking & Packaging:\nOnce your parcel is dispatched, you will receive real-time tracking details via WhatsApp. All sarees and fabrics are packed in weather-sealed artisan boxes to preserve handloom texture during transit.\n\nAll orders are shipped via Blue Dart, DTDC, Delhivery, or Speed Post. For commercial wholesale orders, dedicated freight cargo services are arranged with GST e-way bills."
+      },
+      "refund-cancellation": {
+        "title": "Refund & Cancellation Policy",
+        "last_updated": "November 2026",
+        "content": "Our commitment is to deliver authentic, heirloom-quality handloom textiles. We stand behind every weave crafted at our pit-looms.\n\nCancellations:\n• You may request cancellation of an order before it has been dispatched from our loft by contacting our WhatsApp support at +91 97981 41494.\n• Once an order has been dispatched and handed to the courier partner, cancellation is no longer possible.\n\nReturns & Replacements:\n• In the rare event that you receive a damaged piece, transit defect, or incorrect weave, please notify us within 48 hours of delivery with unboxing photos or video.\n• Approved returns will be replaced with an identical weave or a full refund issued to your bank account / UPI within 3 to 5 business days.\n• Items must be in unwashed, unworn, original fold condition with all tags and packaging intact.\n• Custom-cut fabric yardage (meter cuts from running bolts) and custom-dyed batches are prepared to specification and cannot be returned once cut."
+      },
+      "handloom-disclaimer": {
+        "title": "Handloom Disclaimer Policy",
+        "last_updated": "November 2026",
+        "content": "Handcrafted Authenticity:\nEvery saree, chadar, and meter of fabric at Linen Galaxy is woven by skilled artisans on traditional wooden pit-looms. Unlike mass-manufactured powerloom cloth, authentic handloom textiles naturally exhibit slight variations in weave density, subtle yarn slubs, texture nuances, and hand-block or hand-print positioning.\n\nThese characteristics are not defects; they are the proud hallmarks of human touch, heritage craftsmanship, and centuries-old weaving discipline.\n\nColor Accuracy:\nWe photograph our weaves under natural balanced daylight to represent colors as faithfully as possible. However, subtle tone variations may occur across different smartphone or laptop screens due to display calibration.\n\nWashing & Care Instructions:\n• Pure Silk & Organza: Strictly Dry Clean recommended.\n• Pure Linen & Khadi: Gentle hand wash in cold water using mild liquid detergent. Dry in shade.\n• Dark or naturally dyed fabrics: May release excess surface dye during first wash. Wash separately."
+      },
+      "privacy-policy": {
+        "title": "Privacy Policy",
+        "last_updated": "November 2026",
+        "content": "Linen Galaxy (A Unit of A S Handloom, Est. 2007) respects your privacy and is committed to protecting your personal information.\n\nInformation We Collect:\n• Contact Information: Name, delivery address, phone number, and email address provided during order placement or WhatsApp inquiries.\n• Transaction History: Details of products ordered and delivery status.\n\nHow We Use Your Information:\n• To fulfill, dispatch, and track your orders.\n• To provide customer service, order updates, and respond to your queries.\n• We do NOT sell, rent, or trade your personal data with any third-party advertisers.\n\nData Security:\nAll customer records are securely stored and accessible only to authorized staff for fulfillment purposes. For any privacy queries or data deletion requests, contact us at ashandloombgp@gmail.com or +91 97981 41494."
+      },
+      "terms-of-service": {
+        "title": "Terms of Service",
+        "last_updated": "November 2026",
+        "content": "Welcome to Linen Galaxy. By accessing our website (ashandloom.in/linengalaxy) and ordering our handcrafted handloom textiles, you agree to these Terms of Service.\n\n1. Artisan Production:\nAll items listed are crafted by handloom weavers. Specifications such as GSM, weight, and meterage are measured with care but may carry minor artisan tolerances.\n\n2. Pricing & Commercials:\n• Retail prices shown are inclusive of applicable taxes unless specified.\n• Wholesale and B2B pricing is subject to Minimum Order Quantity (MOQ) and commercial GST invoicing (GSTIN 10AJXPA6956B1ZD).\n• We reserve the right to revise prices or discontinue products based on raw silk and flax yarn market rates.\n\n3. Intellectual Property:\nAll product photography, logo branding, weave descriptions, and editorial text are the exclusive property of Linen Galaxy by A S Handloom.\n\n4. Governing Law:\nAny legal disputes arising from transactions shall be subject to the exclusive jurisdiction of the competent courts in Bhagalpur, Bihar, India."
+      }
+    }
+  },
+  "categories": [
+    {
+      "id": "cat-saree",
+      "slug": "saree",
+      "name": "Handloom Sarees",
+      "description": "Ancestral pit-loom weaves in pure desi silk, organza, linen and festive zari.",
+      "icon": "fas fa-tshirt",
+      "types": [
+        "Pure Desi Silk",
+        "Pure Linen",
+        "Moonga Silk",
+        "Pure Organza",
+        "Viscose Saree",
+        "Kota Silk Saree",
+        "Digital Print Saree",
+        "Hand Print Saree"
+      ],
+      "is_active": true,
+      "sort_order": 1
+    },
+    {
+      "id": "cat-fabric",
+      "slug": "fabric",
+      "name": "Pure Running Fabrics",
+      "description": "Linen shirting, suiting, khadi, and tussar yardage for tailoring and garment brands.",
+      "icon": "fas fa-scroll",
+      "types": [
+        "Linen Shirting 80 LEA",
+        "Linen Shirting 70 LEA",
+        "Linen Shirting 60 LEA",
+        "Linen Suiting 25 LEA",
+        "Linen Suiting 33 LEA",
+        "Pure Cotton Fabric",
+        "Number 1 Khaadi Fabric",
+        "Ghiccha Fabric",
+        "Tussar Fabric"
+      ],
+      "is_active": true,
+      "sort_order": 2
+    },
+    {
+      "id": "cat-suit-salwar",
+      "slug": "suit-salwar",
+      "name": "Suit & Salwar",
+      "description": "Artisanal Banarasi and handloom suit fabrics with matching dupattas.",
+      "icon": "fas fa-female",
+      "types": [
+        "Banarsi Suit Salwar Fabric",
+        "Tussar Silk Suit Material",
+        "Pure Linen Unstitched Suit"
+      ],
+      "is_active": true,
+      "sort_order": 3
+    },
+    {
+      "id": "cat-dupatta-stole",
+      "slug": "dupatta-stole",
+      "name": "Dupattas & Stoles",
+      "description": "Lightweight handloom dupattas, stoles, and festive wraps with zari buti.",
+      "icon": "fas fa-feather",
+      "types": [
+        "Pure Handloom Dupatta",
+        "Artisanal Silk Stole",
+        "Linen Jacquard Stole"
+      ],
+      "is_active": true,
+      "sort_order": 4
+    },
+    {
+      "id": "cat-chadar",
+      "slug": "chadar",
+      "name": "Bhagalpuri Chadar",
+      "description": "World-famous Bhagalpur DULL chadar (Andi weave), comfortable in all seasons.",
+      "icon": "fas fa-bed",
+      "types": [
+        "Bhagalpuri DULL Chadar",
+        "Viscose Dull Chadar",
+        "Traditional Andi Chadar"
+      ],
+      "is_active": true,
+      "sort_order": 5
+    },
+    {
+      "id": "cat-gamcha",
+      "slug": "gamcha",
+      "name": "Handloom Gamchas",
+      "description": "Authentic Bhagalpuri pure cotton and resham gamchas woven for extreme softness.",
+      "icon": "fas fa-spa",
+      "types": [
+        "Modi Gamcha",
+        "Resham Gamcha",
+        "Pure Cotton Check Gamcha"
+      ],
+      "is_active": true,
+      "sort_order": 6
+    },
+    {
+      "id": "cat-lungi",
+      "slug": "lungi",
+      "name": "Traditional Lungis",
+      "description": "Breathable, durable handloom lungis in pure cotton and silky viscose.",
+      "icon": "fas fa-male",
+      "types": [
+        "Viscose Lungi",
+        "Pure Cotton Lungi",
+        "Handloom Check Lungi"
+      ],
+      "is_active": true,
+      "sort_order": 7
+    }
+  ],
+  "products": []
+}

@@ -2,171 +2,166 @@
 
 import useSWR from 'swr'
 import ProductCarousel from '@/components/ProductCarousel'
-import FabricTypeButton from '@/components/FabricTypeButton'
 import Link from 'next/link'
 import type { Product } from '@/lib/types'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 const fabricTypes = [
-  { name: 'Linen', icon: 'fas fa-wind', color: '#FF9800' },
-  { name: 'Silk', icon: 'fas fa-gem', color: '#E91E63' },
-  { name: 'Cotton', icon: 'fas fa-leaf', color: '#4CAF50' }
+  { name: 'Pure Linen Handloom (80/70/60 LEA)', icon: 'fas fa-wind', desc: 'Ultra-breathable flax shirting & heavy 25/33 LEA suiting' },
+  { name: 'Bhagalpuri Tussar & Ghiccha', icon: 'fas fa-gem', desc: 'Regal golden sheen native to Bihar’s ancestral silkworm reeling' },
+  { name: 'No. 1 Khadi & Cotton Mulmul', icon: 'fas fa-leaf', desc: 'Hand-spun, organic certified yardage for daily luxury tailoring' },
 ]
 
-export default function FabricCollection() {
-  const { data, isLoading } = useSWR<{ products: Product[], total: number }>('/api/products?category=fabric&limit=10', fetcher)
+interface FabricCollectionProps {
+  heading?: string
+  subheading?: string
+  showPrices?: boolean
+  showWholesalePrices?: boolean
+}
+
+export default function FabricCollection({
+  heading = 'Pure Running Fabrics & Yardage',
+  subheading = 'Linen Shirting (80/70/60 LEA), Suiting (25/33 LEA), Cotton, Khadi, Ghiccha & Tussar',
+  showPrices = true,
+  showWholesalePrices = true,
+}: FabricCollectionProps = {}) {
+  const { data, isLoading } = useSWR<{ products: Product[], total: number }>('/api/products?category=fabric&limit=16', fetcher)
   
   const displayedFabrics = data?.products || []
-  const totalFabrics = data?.total || 0
+  const totalFabrics = data?.total ?? displayedFabrics.length
 
   return (
-    <section id="fabrics" className="section fabrics-collections animate">
-      <div className="container-image">
+    <section id="fabrics" className="section-lux" style={{ background: '#FAF9F6', borderBottom: '1px solid #ECE7E1' }}>
+      <div className="container-lux">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%)',
-              padding: '8px 20px',
-              borderRadius: '50px',
-              marginBottom: '16px',
-              fontSize: '14px',
-              fontWeight: 600,
-              color: '#FF9800'
-            }}
-          >
-            <i className="fas fa-scroll"></i>
-            Premium Fabrics
-          </div>
-          <h2 className="section-title-fabric" style={{ marginBottom: '16px' }}>
-            Fabric Collection
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 36px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8A7B6D' }}>
+            Running Yardage & Wholesale Bolts
+          </span>
+          <h2 style={{ fontFamily: 'var(--font-heading), "Playfair Display", Georgia, serif', fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', margin: '10px 0 14px', color: '#1C1917' }}>
+            {heading}
           </h2>
-          <p style={{
-            maxWidth: '600px',
-            margin: '24px auto 0',
-            color: 'var(--color-text-secondary)',
-            fontSize: '18px',
-            lineHeight: 1.7
-          }}>
-            Explore our premium range of handwoven fabrics - from luxurious Linen to elegant Silk and comfortable Cotton
+          <p style={{ fontSize: '14.5px', lineHeight: 1.65, color: '#6E6259', margin: 0 }}>
+            {subheading}. Supplying India’s top couturiers, apparel boutiques, and bespoke tailors. Available by the meter or in bulk commercial rolls.
           </p>
         </div>
 
-        {/* Fabric Types */}
+        {/* 3 Weave Type Highlights */}
         <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '20px',
-          marginBottom: '40px',
-          flexWrap: 'wrap'
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '16px',
+          marginBottom: '36px',
         }}>
-          {fabricTypes.map((type, index) => (
-            <FabricTypeButton 
-              key={index}
-              name={type.name}
-              icon={type.icon}
-              color={type.color}
-            />
-          ))}
-        </div>
-
-        {/* Loading State */}
-        {isLoading ? (
-          <div style={{
-            display: 'flex',
-            gap: '20px',
-            minHeight: '420px',
-            padding: '0 24px'
-          }}>
-            {[...Array(4)].map((_, i) => (
-              <div 
-                key={i}
-                style={{
-                  flex: 1,
-                  background: 'linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)',
-                  borderRadius: '24px',
-                  animation: 'shimmer 1.5s infinite'
-                }}
-              />
-            ))}
-          </div>
-        ) : (
-          /* Product Carousel */
-          <div className="collection-carousel" style={{ padding: '0 24px' }}>
-            <ProductCarousel items={displayedFabrics} variant="fabric" />
-          </div>
-        )}
-
-        {/* See All Button */}
-        {totalFabrics > 10 && (
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link
-              href="/products/fabrics"
+          {fabricTypes.map((type, idx) => (
+            <div
+              key={idx}
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '16px 36px',
-                background: 'linear-gradient(135deg, #FF9800 0%, #FF5722 100%)',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '50px',
-                fontWeight: 600,
-                fontSize: '16px',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 8px 25px -8px rgba(255, 152, 0, 0.4)'
-              }}
-            >
-              View All Fabrics
-              <span style={{
-                background: 'rgba(255, 255, 255, 0.2)',
-                padding: '4px 12px',
-                borderRadius: '50px',
-                fontSize: '14px'
-              }}>
-                {totalFabrics}
-              </span>
-              <i className="fas fa-arrow-right"></i>
-            </Link>
-          </div>
-        )}
-
-        {/* Trust Banner */}
-        <div style={{
-          marginTop: '64px',
-          padding: '32px',
-          background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.05) 0%, rgba(255, 152, 0, 0.05) 100%)',
-          borderRadius: '24px',
-          border: '1px solid var(--color-border)',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '48px',
-          flexWrap: 'wrap'
-        }}>
-          {[
-            { icon: 'fas fa-truck', text: 'Pan India Delivery' },
-            { icon: 'fas fa-shield-alt', text: 'Authentic Handloom' },
-            { icon: 'fas fa-hand-holding-heart', text: 'Artisan Made' },
-            { icon: 'fas fa-exchange-alt', text: 'Easy Returns' }
-          ].map((item, index) => (
-            <div 
-              key={index}
-              style={{
+                padding: '16px 20px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
-                color: 'var(--color-text-secondary)'
+                gap: '14px',
+                background: '#FFFFFF',
+                borderRadius: '6px',
+                border: '1px solid #ECE7E1',
               }}
             >
-              <i className={item.icon} style={{ color: '#E91E63', fontSize: '20px' }}></i>
-              <span style={{ fontWeight: 500, fontSize: '14px' }}>{item.text}</span>
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '6px',
+                  background: '#F0EBE5',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#1C1917',
+                  fontSize: '16px',
+                  flexShrink: 0,
+                }}
+              >
+                <i className={type.icon}></i>
+              </div>
+              <div>
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1C1917', margin: '0 0 2px' }}>
+                  {type.name}
+                </h4>
+                <p style={{ fontSize: '12px', color: '#6E6259', margin: 0 }}>
+                  {type.desc}
+                </p>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Product Carousel or Clean Empty State */}
+        {displayedFabrics.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '36px 20px', color: '#6E6259' }}>
+            <p style={{ fontSize: '15px', color: '#6E6259', margin: 0 }}>
+              {isLoading ? 'Loading fabric yardage...' : 'No products yet'}
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="collection-carousel">
+              <ProductCarousel
+                items={displayedFabrics}
+                variant="fabric"
+                showPrices={showPrices}
+                showWholesalePrices={showWholesalePrices}
+              />
+            </div>
+
+            {/* View All & Order Button */}
+            <div style={{ textAlign: 'center', marginTop: '36px', display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
+              <Link
+                href="/products?category=fabric"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  borderRadius: '4px',
+                  background: '#1C1917',
+                  color: '#FFFFFF',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                <span>View All Fabrics ({totalFabrics})</span>
+                <i className="fas fa-arrow-right" style={{ fontSize: '11px' }}></i>
+              </Link>
+
+              <a
+                href="https://wa.me/919798141494?text=Hello%20Linen%20Galaxy!%20I%20would%20like%20to%20order%20Fabric%20swatches%20or%20inquire%20about%20roll%20pricing."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  borderRadius: '4px',
+                  background: '#FFFFFF',
+                  color: '#1C1917',
+                  border: '1px solid #D7D0C6',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                <i className="fas fa-swatchbook" style={{ color: '#8A7B6D' }}></i>
+                <span>Request Swatch Book</span>
+              </a>
+            </div>
+          </>
+        )}
       </div>
     </section>
   )

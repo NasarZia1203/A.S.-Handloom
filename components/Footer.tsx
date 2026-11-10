@@ -3,195 +3,174 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const quickLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Sarees', href: '#sarees' },
-  { label: 'Fabrics', href: '#fabrics' },
-  { label: 'Contact', href: '#contact' }
-]
-
-const socialLinks = [
-  { icon: 'fas fa-map-marker-alt', href: 'https://maps.app.goo.gl/hYaGfcFaaA2Jhzus5', label: 'Location' },
-  { icon: 'fab fa-facebook-f', href: '#', label: 'Facebook' },
-  { icon: 'fab fa-instagram', href: '#', label: 'Instagram' },
-  { icon: 'fab fa-whatsapp', href: 'https://wa.me/919798141494', label: 'WhatsApp' }
-]
-
 export default function Footer() {
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      e.preventDefault()
-      const target = document.querySelector(href)
-      if (target) {
-        const offsetTop = (target as HTMLElement).offsetTop - 80
-        window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-      }
-    }
-  }
-
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-          {/* Brand Section */}
-          <div className="footer-section">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <div style={{
-                width: '48px',
-                height: '48px',
-                borderRadius: '14px',
-                overflow: 'hidden',
-                background: 'white'
-              }}>
-                <Image 
-                  src="/assets/images/logo.png" 
-                  alt="A S Handloom" 
-                  width={48} 
-                  height={48}
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <h3 style={{ 
-                margin: 0,
-                background: 'linear-gradient(135deg, #E91E63 0%, #FF9800 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontSize: '22px'
-              }}>
-                A S Handloom
-              </h3>
-            </div>
-            <p style={{ marginBottom: '16px', lineHeight: 1.8 }}>
-              Weaving Heritage Since 2007. We specialize in creating exquisite
-              handloom sarees and premium fabrics with traditional craftsmanship
-              and contemporary designs.
-            </p>
-            
-            {/* Social Links */}
-            <div className="social-links">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target={social.href.startsWith('http') ? '_blank' : undefined}
-                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  aria-label={social.label}
-                >
-                  <i className={social.icon}></i>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="footer-section">
-            <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                width: '4px',
-                height: '20px',
-                background: 'linear-gradient(180deg, #E91E63 0%, #FF5722 100%)',
-                borderRadius: '2px'
-              }}></span>
+    <footer
+      style={{
+        background: '#FAF9F6',
+        borderTop: '1px solid #ECE7E1',
+        padding: '56px 0 28px',
+        color: '#4B433E',
+      }}
+    >
+      <div style={{ maxWidth: '1480px', margin: '0 auto', padding: '0 20px' }}>
+        
+        {/* 3-Column Linen World Editorial Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '48px',
+            marginBottom: '44px',
+          }}
+        >
+          {/* Column 1: Quick Links */}
+          <div>
+            <h4
+              style={{
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#1C1917',
+                marginBottom: '16px',
+              }}
+            >
               Quick Links
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {quickLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    transition: 'all 0.25s ease'
-                  }}
-                >
-                  <i className="fas fa-chevron-right" style={{ fontSize: '10px', color: '#E91E63' }}></i>
-                  {link.label}
-                </a>
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { label: 'Shop All Collections', href: '/products' },
+                { label: 'Handloom Sarees', href: '/products?category=saree' },
+                { label: 'Pure Linen Yardage (LEA)', href: '/products?category=fabric' },
+                { label: 'Bhagalpuri DULL Chadar', href: '/products?category=chadar' },
+                { label: 'Next Day Dispatch (NDD)', href: '/products?ndd=true' },
+                { label: 'Clearance & Flash Sale', href: '/products?sale=true' },
+                { label: 'Wholesale Manufacturing', href: '/linengalaxy#wholesale' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Contact Us', href: '/contact' },
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link
+                    href={link.href}
+                    style={{
+                      fontSize: '13px',
+                      color: '#6E6259',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#1C1917')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#6E6259')}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-              <Link 
-                href="/admin"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: '#94A3B8',
-                  textDecoration: 'none'
-                }}
-              >
-                <i className="fas fa-chevron-right" style={{ fontSize: '10px', color: '#E91E63' }}></i>
-                Admin Portal
-              </Link>
-            </div>
+            </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="footer-section">
-            <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                width: '4px',
-                height: '20px',
-                background: 'linear-gradient(180deg, #E91E63 0%, #FF5722 100%)',
-                borderRadius: '2px'
-              }}></span>
-              Contact Info
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <p style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', margin: 0 }}>
-                <i className="fas fa-user-tie" style={{ marginTop: '4px' }}></i>
-                <span>
-                  <strong style={{ color: 'white' }}>Proprietor:</strong><br />
-                  MD RAZA ALAM
-                </span>
-              </p>
-              <p style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', margin: 0 }}>
-                <i className="fas fa-map-marker-alt" style={{ marginTop: '4px' }}></i>
-                <span>
-                  85 M T N Ghosh Road<br />
-                  Bhagalpur, Bihar, India
-                </span>
-              </p>
-              <p style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
-                <i className="fas fa-phone"></i>
-                <a href="tel:+919430908657" style={{ color: '#94A3B8' }}>+91-9430908657</a>
-              </p>
-              <p style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
-                <i className="fas fa-envelope"></i>
-                <a href="mailto:ashandloombgp@gmail.com" style={{ color: '#94A3B8' }}>ashandloombgp@gmail.com</a>
-              </p>
-              <p style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
-                <i className="fas fa-file-invoice-dollar"></i>
-                <span>
-                  <strong style={{ color: 'white' }}>GST:</strong> 10AJXPA6956B1ZD
-                </span>
-              </p>
+          {/* Column 2: Customer Service (Dynamic Policy Pages) */}
+          <div>
+            <h4
+              style={{
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#1C1917',
+                marginBottom: '16px',
+              }}
+            >
+              Customer Service
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {[
+                { label: 'Shipping & Delivery Policy', href: '/policies/shipping-delivery' },
+                { label: 'Refund & Cancellation Policy', href: '/policies/refund-cancellation' },
+                { label: 'Handloom Disclaimer Policy', href: '/policies/handloom-disclaimer' },
+                { label: 'Privacy Policy', href: '/policies/privacy-policy' },
+                { label: 'Terms of Service', href: '/policies/terms-of-service' },
+              ].map((policy, i) => (
+                <li key={i}>
+                  <Link
+                    href={policy.href}
+                    style={{
+                      fontSize: '13px',
+                      color: '#6E6259',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#1C1917')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#6E6259')}
+                  >
+                    {policy.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: About The Store */}
+          <div>
+            <div style={{ position: 'relative', width: '135px', height: '48px', marginBottom: '14px' }}>
+              <Image
+                src="/assets/images/linen-galaxy-logo.jpg"
+                alt="Linen Galaxy"
+                fill
+                sizes="135px"
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <h4
+              style={{
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#1C1917',
+                marginBottom: '10px',
+              }}
+            >
+              About The Store
+            </h4>
+            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#6E6259', margin: '0 0 16px' }}>
+              Bhagalpur based online boutique and manufacturing house for finest handwoven sarees, scarves & pure linen fabrics. We prioritize quality and craftsmanship. Extending our support to fading centuries-old pit-loom weaving traditions and supporting our fellow weavers and artists. Join us in our journey as we unfold the finest stories straight out of our looms. Crafted with love. #InnativWeaver
+            </p>
+            <div style={{ fontSize: '12.5px', color: '#1C1917', fontWeight: 600 }}>
+              Direct WhatsApp Orders: <a href="https://wa.me/919798141494" target="_blank" rel="noopener noreferrer" style={{ color: '#047857', textDecoration: 'none' }}>+91 97981 41494</a>
             </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="footer-bottom">
-          <div style={{
+        {/* Clean Editorial Bottom Bar (No Card Companies / Payment Gateways) */}
+        <div
+          style={{
+            paddingTop: '20px',
+            borderTop: '1px solid #ECE7E1',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '16px'
-          }}>
-            <p style={{ margin: 0 }}>
-              &copy; {new Date().getFullYear()} A S Handloom. All rights reserved.
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#64748B' }}>
-              <span>Made with</span>
-              <i className="fas fa-heart" style={{ color: '#E91E63', fontSize: '12px' }}></i>
-              <span>in India</span>
-            </div>
+            gap: '12px',
+            fontSize: '12px',
+            color: '#8A7B6D',
+          }}
+        >
+          <div>
+            &copy; {new Date().getFullYear()} — LINEN GALAXY BY A S HANDLOOM (EST. 2007) • ALL RIGHTS RESERVED.
+          </div>
+
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <Link href="/about" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
+              About
+            </Link>
+            <span>•</span>
+            <Link href="/contact" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
+              Contact
+            </Link>
           </div>
         </div>
+
       </div>
     </footer>
   )

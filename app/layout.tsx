@@ -2,17 +2,75 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import ScrollProgress from '@/components/ScrollProgress'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ashandloom.com'
+
 export const metadata: Metadata = {
-  title: 'A S Handloom | Premium Handloom Sarees & Fabrics from Bhagalpur',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'A S Handloom | Premium Handloom Sarees & Fabrics from Bhagalpur',
+    template: '%s | A S Handloom',
+  },
   description:
     'A S Handloom - Weaving Heritage Since 2007. Shop exquisite handloom sarees and premium fabrics including Linen, Silk, and Cotton textiles from Bhagalpur, Bihar. Authentic Indian handloom with traditional craftsmanship.',
-  keywords: 'handloom sarees, Bhagalpur sarees, linen sarees, silk sarees, cotton fabrics, Indian textiles, traditional sarees, handwoven fabrics',
+  keywords: [
+    'handloom sarees',
+    'Bhagalpur sarees',
+    'Bhagalpur silk',
+    'linen sarees',
+    'silk sarees',
+    'cotton fabrics',
+    'Indian textiles',
+    'traditional sarees',
+    'handwoven fabrics',
+    'A S Handloom',
+  ],
   authors: [{ name: 'A S Handloom' }],
+  creator: 'A S Handloom',
+  publisher: 'A S Handloom',
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  icons: {
+    icon: [
+      { url: '/browser-tab-logo.svg', type: 'image/svg+xml' },
+      { url: '/assets/images/logo.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/assets/images/logo.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     title: 'A S Handloom | Premium Handloom Sarees & Fabrics',
     description: 'Weaving Heritage Since 2007. Exquisite handloom sarees and premium fabrics from Bhagalpur, Bihar.',
-    type: 'website',
+    url: siteUrl,
+    siteName: 'A S Handloom',
     locale: 'en_IN',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/images/herosec1.webp',
+        width: 1200,
+        height: 630,
+        alt: 'A S Handloom - Heritage Sarees and Handwoven Fabrics',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'A S Handloom | Premium Handloom Sarees & Fabrics',
+    description: 'Weaving Heritage Since 2007. Exquisite handloom sarees and premium fabrics from Bhagalpur, Bihar.',
+    images: ['/assets/images/herosec1.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
@@ -28,6 +86,60 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'ClothingStore',
+    name: 'A S Handloom',
+    legalName: 'A S Handloom',
+    description:
+      'Weaving Heritage Since 2007. Manufacturer and wholesaler of exquisite handloom sarees, Bhagalpuri silk, pure linen, and fine cotton fabrics in Bhagalpur, Bihar.',
+    url: siteUrl,
+    logo: `${siteUrl}/assets/images/logo.png`,
+    image: `${siteUrl}/assets/images/herosec1.webp`,
+    telephone: '+919430908657',
+    email: 'ashandloombgp@gmail.com',
+    taxID: '10AJXPA6956B1ZD',
+    founder: {
+      '@type': 'Person',
+      name: 'MD RAZA ALAM',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '85 M T N Ghosh Road, Hasnabad, Champanagar',
+      addressLocality: 'Bhagalpur',
+      addressRegion: 'Bihar',
+      postalCode: '812004',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '25.2425',
+      longitude: '86.9842',
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ],
+        opens: '09:00',
+        closes: '20:00',
+      },
+    ],
+    priceRange: '₹₹',
+    currenciesAccepted: 'INR',
+    paymentAccepted: 'Cash, UPI, Bank Transfer',
+    sameAs: [
+      'https://maps.app.goo.gl/hYaGfcFaaA2Jhzus5',
+      'https://wa.me/919798141494',
+    ],
+  }
+
   return (
     <html lang="en">
       <head>
@@ -58,6 +170,10 @@ export default function RootLayout({
           rel="preload"
           as="image"
           href="/assets/images/herosec3.webp"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
       <body>

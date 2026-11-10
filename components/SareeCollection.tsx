@@ -7,157 +7,106 @@ import type { Product } from '@/lib/types'
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
-export default function SareeCollection() {
-  const { data, isLoading } = useSWR<{ products: Product[], total: number }>('/api/products?category=saree&limit=10', fetcher)
+interface SareeCollectionProps {
+  heading?: string
+  subheading?: string
+  showPrices?: boolean
+  showWholesalePrices?: boolean
+}
+
+export default function SareeCollection({
+  heading = 'Exquisite Handloom Sarees',
+  subheading = 'Pure Desi Silk, Pure Linen, Moonga Silk, Pure Organza, Viscose & Kota Sarees',
+  showPrices = true,
+  showWholesalePrices = true,
+}: SareeCollectionProps = {}) {
+  const { data, isLoading } = useSWR<{ products: Product[], total: number }>('/api/products?category=saree&limit=16', fetcher)
   
   const displayedSarees = data?.products || []
-  const totalSarees = data?.total || 0
+  const totalSarees = data?.total ?? displayedSarees.length
 
   return (
-    <section id="sarees" className="section collections animate">
-      <div className="container-image">
+    <section id="sarees" className="section-lux" style={{ background: '#FFFFFF', borderBottom: '1px solid #ECE7E1' }}>
+      <div className="container-lux">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.1) 0%, rgba(255, 87, 34, 0.1) 100%)',
-              padding: '8px 20px',
-              borderRadius: '50px',
-              marginBottom: '16px',
-              fontSize: '14px',
-              fontWeight: 600,
-              color: '#E91E63'
-            }}
-          >
-            <i className="fas fa-star"></i>
-            Premium Collection
-          </div>
-          <h2 className="section-title-saree" style={{ marginBottom: '16px' }}>
-            Saree Collection
+        <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 36px' }}>
+          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8A7B6D' }}>
+            Pure Bhagalpuri Tussar, Moonga & Banarasi Weaves
+          </span>
+          <h2 style={{ fontFamily: 'var(--font-heading), "Playfair Display", Georgia, serif', fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)', margin: '10px 0 14px', color: '#1C1917' }}>
+            {heading}
           </h2>
-          <p style={{
-            maxWidth: '600px',
-            margin: '24px auto 0',
-            color: 'var(--color-text-secondary)',
-            fontSize: '18px',
-            lineHeight: 1.7
-          }}>
-            Discover our exquisite range of handwoven sarees, each piece telling a unique story of tradition and elegance
+          <p style={{ fontSize: '14.5px', lineHeight: 1.65, color: '#6E6259', margin: 0 }}>
+            {subheading}. Every saree is woven on ancestral pit-looms by Bhagalpur artisans. Available for retail purchase with doorstep delivery, or in wholesale quantities.
           </p>
         </div>
 
-        {/* Quick Stats */}
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '32px',
-          marginBottom: '40px',
-          flexWrap: 'wrap'
-        }}>
-          {[
-            { icon: 'fas fa-palette', label: 'Unique Designs', value: `${totalSarees}+` },
-            { icon: 'fas fa-gem', label: 'Fabric Types', value: '3' },
-            { icon: 'fas fa-award', label: 'Quality Assured', value: '100%' }
-          ].map((stat, index) => (
-            <div 
-              key={index}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                padding: '12px 24px',
-                background: 'white',
-                borderRadius: '16px',
-                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
-                border: '1px solid var(--color-border)'
-              }}
-            >
-              <div style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#E91E63'
-              }}>
-                <i className={stat.icon}></i>
-              </div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: '18px', color: 'var(--color-text)' }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>
-                  {stat.label}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Loading State */}
-        {isLoading ? (
-          <div style={{
-            display: 'flex',
-            gap: '20px',
-            minHeight: '420px',
-            padding: '0 24px'
-          }}>
-            {[...Array(4)].map((_, i) => (
-              <div 
-                key={i}
-                style={{
-                  flex: 1,
-                  background: 'linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)',
-                  borderRadius: '24px',
-                  animation: 'shimmer 1.5s infinite'
-                }}
-              />
-            ))}
+        {/* Product Carousel or Clean Empty State */}
+        {displayedSarees.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '36px 20px', color: '#6E6259' }}>
+            <p style={{ fontSize: '15px', color: '#6E6259', margin: 0 }}>
+              {isLoading ? 'Loading handloom sarees...' : 'No products yet'}
+            </p>
           </div>
         ) : (
-          /* Product Carousel */
-          <div className="collection-carousel" style={{ padding: '0 24px' }}>
-            <ProductCarousel items={displayedSarees} variant="saree" />
-          </div>
-        )}
+          <>
+            <div className="collection-carousel">
+              <ProductCarousel
+                items={displayedSarees}
+                variant="saree"
+                showPrices={showPrices}
+                showWholesalePrices={showWholesalePrices}
+              />
+            </div>
 
-        {/* See All Button */}
-        {totalSarees > 10 && (
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link
-              href="/products/sarees"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '16px 36px',
-                background: 'linear-gradient(135deg, #E91E63 0%, #FF5722 100%)',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '50px',
-                fontWeight: 600,
-                fontSize: '16px',
-                transition: 'all 0.25s ease',
-                boxShadow: '0 8px 25px -8px rgba(233, 30, 99, 0.4)'
-              }}
-            >
-              View All Sarees
-              <span style={{
-                background: 'rgba(255, 255, 255, 0.2)',
-                padding: '4px 12px',
-                borderRadius: '50px',
-                fontSize: '14px'
-              }}>
-                {totalSarees}
-              </span>
-              <i className="fas fa-arrow-right"></i>
-            </Link>
-          </div>
+            {/* View All & Order Button */}
+            <div style={{ textAlign: 'center', marginTop: '36px', display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
+              <Link
+                href="/products?category=saree"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  borderRadius: '4px',
+                  background: '#1C1917',
+                  color: '#FFFFFF',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                <span>Explore Saree Catalog ({totalSarees})</span>
+                <i className="fas fa-arrow-right" style={{ fontSize: '11px' }}></i>
+              </Link>
+
+              <a
+                href="https://wa.me/919798141494?text=Hello%20Linen%20Galaxy!%20I%20would%20like%20to%20order%20handloom%20sarees."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 24px',
+                  borderRadius: '4px',
+                  background: '#FFFFFF',
+                  color: '#1C1917',
+                  border: '1px solid #D7D0C6',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  textDecoration: 'none',
+                }}
+              >
+                <i className="fab fa-whatsapp" style={{ color: '#25D366' }}></i>
+                <span>Inquire on WhatsApp</span>
+              </a>
+            </div>
+          </>
         )}
       </div>
     </section>

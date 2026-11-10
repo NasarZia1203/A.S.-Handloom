@@ -164,14 +164,14 @@ export default function CloudinaryUpload({
           onDragLeave={() => setIsDragging(false)}
           onDrop={() => setIsDragging(false)}
           style={{
-            padding: '40px 32px',
+            padding: '36px 28px',
             borderRadius: '16px',
             border: isDragging 
-              ? '2px dashed #E91E63'
-              : '2px dashed #e2e8f0',
+              ? '2px dashed #C5A059'
+              : '2px dashed #E2D9CC',
             background: isDragging 
-              ? 'linear-gradient(135deg, rgba(233, 30, 99, 0.05), rgba(255, 87, 34, 0.05))'
-              : '#fafafa',
+              ? 'rgba(197, 160, 89, 0.06)'
+              : '#FAFAF7',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
             textAlign: 'center',
@@ -179,34 +179,33 @@ export default function CloudinaryUpload({
         >
           <div
             style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '16px',
-              background: 'linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 87, 34, 0.1))',
+              width: '60px',
+              height: '60px',
+              borderRadius: '14px',
+              background: 'linear-gradient(135deg, rgba(197, 160, 89, 0.15), rgba(183, 110, 121, 0.15))',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 16px',
+              margin: '0 auto 14px',
+              border: '1px solid rgba(197, 160, 89, 0.3)',
             }}
           >
             <i
               className="fas fa-cloud-upload-alt"
               style={{
-                fontSize: '28px',
-                background: 'linear-gradient(135deg, #E91E63, #FF5722)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                fontSize: '26px',
+                color: '#C5A059',
               }}
             ></i>
           </div>
-          <div style={{ fontSize: '15px', fontWeight: 600, color: '#374151', marginBottom: '4px' }}>
-            Click to upload image
+          <div style={{ fontSize: '15px', fontWeight: 600, color: '#1E293B', marginBottom: '4px' }}>
+            Click to upload product image
           </div>
-          <div style={{ fontSize: '13px', color: '#94a3b8' }}>
-            or drag and drop
+          <div style={{ fontSize: '13px', color: '#64748B' }}>
+            or drag & drop via Cloudinary CDN
           </div>
-          <div style={{ fontSize: '11px', color: '#cbd5e1', marginTop: '12px' }}>
-            PNG, JPG up to 10MB
+          <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '10px' }}>
+            Supports high-res PNG, JPG, WebP up to 10MB
           </div>
         </div>
       )}

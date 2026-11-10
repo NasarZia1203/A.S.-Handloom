@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useState } from 'react'
@@ -11,14 +12,23 @@ export default function AdminSidebar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null)
 
   const handleSignOut = async () => {
-    const supabase = createClient()
-    await supabase.auth.signOut()
-    router.push('/')
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' })
+    } catch {}
+    try {
+      const supabase = createClient()
+      await supabase.auth.signOut()
+    } catch {}
+    router.refresh()
+    window.location.href = '/'
   }
 
   const navItems = [
-    { href: '/admin/dashboard', icon: 'fas fa-th-large', label: 'Dashboard' },
-    { href: '/admin/dashboard/products/new', icon: 'fas fa-plus-circle', label: 'Add Product' },
+    { href: '/admin/dashboard', icon: 'fas fa-th-large', label: 'Overview Dashboard' },
+    { href: '/admin/dashboard/products/new', icon: 'fas fa-plus-circle', label: 'Add New Product' },
+    { href: '/products', icon: 'fas fa-store', label: 'Live Master Catalog' },
+    { href: '/products?category=saree', icon: 'fas fa-female', label: 'Saree Collection' },
+    { href: '/products?category=fabric', icon: 'fas fa-scroll', label: 'Fabric Collection' },
   ]
 
   const isActive = (href: string) => pathname === href
@@ -28,8 +38,8 @@ export default function AdminSidebar() {
       style={{
         width: '280px',
         height: '100vh',
-        background: 'linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)',
-        color: '#fff',
+        background: '#1A1D20',
+        color: '#E6E9EE',
         display: 'flex',
         flexDirection: 'column',
         flexShrink: 0,
@@ -38,206 +48,153 @@ export default function AdminSidebar() {
         top: 0,
         overflowY: 'auto',
         overflowX: 'hidden',
+        borderRight: '1px solid rgba(229, 210, 184, 0.15)',
+        zIndex: 50,
       }}
     >
-      {/* Background Pattern */}
+      {/* Logo & Brand Header */}
       <div
         style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E91E63' fill-opacity='0.03'%3E%3Cpath d='m0 40 40-40h-20l-20 20v20zm40 0v-20l-20 20h20z'/%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Logo Section */}
-      <div
-        style={{
-          padding: '28px 24px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-          position: 'relative',
-          zIndex: 1,
+          padding: '24px 20px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div
             style={{
-              width: '48px',
-              height: '48px',
-              background: 'linear-gradient(135deg, #E91E63 0%, #FF5722 100%)',
-              borderRadius: '14px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 8px 20px -6px rgba(233, 30, 99, 0.4)',
+              position: 'relative',
+              width: '46px',
+              height: '46px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              background: '#1C1917',
+              border: '2px solid rgba(212, 175, 55, 0.6)',
+              boxShadow: '0 4px 12px rgba(212, 175, 55, 0.25)',
+              flexShrink: 0,
             }}
           >
-            <i className="fas fa-store" style={{ fontSize: '20px', color: 'white' }}></i>
+            <Image
+              src="/assets/images/linen-galaxy-boutique.png"
+              alt="Linen Galaxy"
+              fill
+              sizes="46px"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
           <div>
             <div
               style={{
-                fontFamily: '"Playfair Display", serif',
-                fontSize: '18px',
+                fontFamily: 'var(--font-heading)',
+                fontSize: '1.15rem',
                 fontWeight: 700,
-                background: 'linear-gradient(135deg, #E91E63 0%, #FF5722 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: '#FFFFFF',
+                lineHeight: 1.1,
               }}
             >
-              A S Handloom
+              Linen Galaxy
             </div>
-            <div style={{ fontSize: '11px', color: 'rgba(255, 255, 255, 0.4)', marginTop: '2px' }}>
-              Admin Panel
+            <div style={{ fontSize: '10.5px', color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginTop: '2px' }}>
+              By A S Handloom Admin
             </div>
           </div>
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav
-        style={{
-          flex: 1,
-          padding: '24px 16px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '8px',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            fontSize: '11px',
-            fontWeight: 600,
-            color: 'rgba(255, 255, 255, 0.35)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            padding: '0 12px',
-            marginBottom: '8px',
-          }}
-        >
-          Menu
+      {/* Navigation Links */}
+      <nav style={{ flex: 1, padding: '24px 16px' }}>
+        <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#7E8694', padding: '0 12px 12px', fontWeight: 700 }}>
+          Catalog & Inventory
         </div>
 
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            onMouseEnter={() => setHoveredLink(item.href)}
-            onMouseLeave={() => setHoveredLink(null)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '14px',
-              padding: '14px 16px',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              transition: 'all 0.3s ease',
-              background: isActive(item.href)
-                ? 'linear-gradient(135deg, rgba(233, 30, 99, 0.15), rgba(255, 87, 34, 0.15))'
-                : hoveredLink === item.href
-                ? 'rgba(255, 255, 255, 0.05)'
-                : 'transparent',
-              border: isActive(item.href)
-                ? '1px solid rgba(233, 30, 99, 0.3)'
-                : '1px solid transparent',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
-          >
-            {isActive(item.href) && (
-              <div
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  width: '3px',
-                  height: '24px',
-                  background: 'linear-gradient(180deg, #E91E63, #FF5722)',
-                  borderRadius: '0 4px 4px 0',
-                }}
-              />
-            )}
-            <div
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: isActive(item.href)
-                  ? 'linear-gradient(135deg, #E91E63 0%, #FF5722 100%)'
-                  : 'rgba(255, 255, 255, 0.06)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <i
-                className={item.icon}
-                style={{
-                  fontSize: '15px',
-                  color: isActive(item.href) ? 'white' : 'rgba(255, 255, 255, 0.5)',
-                }}
-              ></i>
-            </div>
-            <span
-              style={{
-                fontSize: '14px',
-                fontWeight: isActive(item.href) ? 600 : 500,
-                color: isActive(item.href) ? 'white' : 'rgba(255, 255, 255, 0.7)',
-              }}
-            >
-              {item.label}
-            </span>
-            {isActive(item.href) && (
-              <div
-                style={{
-                  marginLeft: 'auto',
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  background: '#10b981',
-                  boxShadow: '0 0 8px rgba(16, 185, 129, 0.5)',
-                }}
-              />
-            )}
-          </Link>
-        ))}
+        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          {navItems.map((item) => {
+            const active = isActive(item.href)
+            const hovered = hoveredLink === item.href
+
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  onMouseEnter={() => setHoveredLink(item.href)}
+                  onMouseLeave={() => setHoveredLink(null)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '12px 16px',
+                    borderRadius: '14px',
+                    textDecoration: 'none',
+                    fontSize: '14px',
+                    fontWeight: active ? 600 : 500,
+                    color: active ? '#FFFFFF' : hovered ? '#FFFFFF' : '#A0AAB8',
+                    background: active
+                      ? 'linear-gradient(135deg, #B89668 0%, #D48C70 100%)'
+                      : hovered
+                      ? 'rgba(255, 255, 255, 0.05)'
+                      : 'transparent',
+                    boxShadow: active ? '0 8px 20px -4px rgba(184, 111, 84, 0.4)' : 'none',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  <i className={item.icon} style={{ width: '18px', textAlign: 'center', color: active ? '#FFFFFF' : '#B89668' }}></i>
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
       </nav>
 
-      {/* Bottom Section */}
-      <div
-        style={{
-          padding: '20px 16px',
-          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-          position: 'relative',
-          zIndex: 1,
-          marginTop: 'auto',
-        }}
-      >
-        {/* Sign Out Button */}
+      {/* Footer Info & Sign Out */}
+      <div style={{ padding: '20px 16px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+        <Link
+          href="/"
+          target="_blank"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '10px 16px',
+            borderRadius: '12px',
+            color: '#A0AAB8',
+            textDecoration: 'none',
+            fontSize: '13px',
+            marginBottom: '8px',
+            transition: 'background 0.2s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+        >
+          <i className="fas fa-external-link-alt" style={{ fontSize: '12px', color: '#B89668' }}></i>
+          <span>View Public Storefront</span>
+        </Link>
+
         <button
           onClick={handleSignOut}
           style={{
             width: '100%',
-            padding: '14px 16px',
-            background: 'rgba(239, 68, 68, 0.1)',
-            color: '#ef4444',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            fontWeight: 600,
-            fontSize: '14px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
             gap: '10px',
-            transition: 'all 0.3s ease',
+            padding: '10px 16px',
+            borderRadius: '12px',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            background: 'rgba(239, 68, 68, 0.08)',
+            color: '#ef4444',
+            fontSize: '13px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(239, 68, 68, 0.08)'
           }}
         >
           <i className="fas fa-sign-out-alt"></i>
-          Sign Out
+          <span>Sign Out</span>
         </button>
       </div>
     </aside>

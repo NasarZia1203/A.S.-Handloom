@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" width="100%" height="100%">
+  <defs>
+    <!-- Luxury Gold Linear Gradient -->
+    <linearGradient id="goldGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEFD2"/>
+      <stop offset="25%" stop-color="#ECC880"/>
+      <stop offset="50%" stop-color="#C5A059"/>
+      <stop offset="75%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#8C6527"/>
+    </linearGradient>
+
+    <linearGradient id="goldHighlightH" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C5A059"/>
+      <stop offset="50%" stop-color="#FFF5DC"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+
+    <radialGradient id="spaceDarkH" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#141B2D"/>
+      <stop offset="60%" stop-color="#0E1322"/>
+      <stop offset="100%" stop-color="#070A12"/>
+    </radialGradient>
+
+    <filter id="goldGlowH" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <g id="star4H">
+      <path d="M 0,-10 Q 0,0 10,0 Q 0,0 0,10 Q 0,0 -10,0 Q 0,0 0,-10 Z" fill="url(#goldGradH)"/>
+      <circle cx="0" cy="0" r="1.5" fill="#FFFBF2"/>
+    </g>
+  </defs>
+
+  <!-- Left Emblem Group (scaled and centered at x=90, y=90, r=72) -->
+  <g transform="translate(18, 18)">
+    <!-- Base Crest Background Circle -->
+    <circle cx="72" cy="72" r="70" fill="url(#spaceDarkH)"/>
+    <circle cx="72" cy="72" r="70" fill="none" stroke="url(#goldGradH)" stroke-width="2.5"/>
+    <circle cx="72" cy="72" r="66" fill="none" stroke="url(#goldGradH)" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.75"/>
+    <circle cx="72" cy="72" r="63" fill="none" stroke="url(#goldGradH)" stroke-width="1.2"/>
+
+    <!-- Mini Weave Pattern -->
+    <g opacity="0.2" stroke="url(#goldGradH)" stroke-width="0.8">
+      <line x1="25" y1="80" x2="65" y2="120"/>
+      <line x1="33" y1="72" x2="73" y2="112"/>
+      <line x1="41" y1="64" x2="81" y2="104"/>
+      <line x1="65" y1="80" x2="25" y2="120"/>
+      <line x1="73" y1="72" x2="33" y2="112"/>
+      <line x1="81" y1="64" x2="41" y2="104"/>
+    </g>
+
+    <!-- Spiral Galaxy Threads -->
+    <g fill="none" stroke="url(#goldGradH)" stroke-linecap="round">
+      <path d="M 72,72 C 80,56 100,44 118,52 C 136,60 138,82 126,98 C 114,114 90,122 70,118 C 50,114 36,94 40,74 C 44,54 62,38 88,36" stroke-width="1.2" opacity="0.6"/>
+      <path d="M 72,72 C 82,62 96,62 104,70 C 112,78 110,92 100,100 C 90,108 76,104 68,94" stroke-width="1.5" opacity="0.85"/>
+      <ellipse cx="72" cy="72" rx="52" ry="24" transform="rotate(-30 72 72)" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.7"/>
+    </g>
+
+    <!-- Stars -->
+    <use href="#star4H" x="106" y="42" transform="scale(0.8) translate(26, 10)"/>
+    <use href="#star4H" x="40" y="102" transform="scale(0.7) translate(17, 43)"/>
+    <circle cx="108" cy="94" r="1.2" fill="url(#goldGradH)"/>
+    <circle cx="36" cy="78" r="1.2" fill="url(#goldGradH)"/>
+    <circle cx="72" cy="32" r="1.5" fill="url(#goldGradH)"/>
+
+    <!-- Shuttle (Rotated -40deg around 72,72) -->
+    <g transform="rotate(-40 72 72)">
+      <path d="M 44,72 C 55,64 89,64 100,72 C 89,80 55,80 44,72 Z" 
+            fill="url(#goldGradH)" stroke="url(#goldHighlightH)" stroke-width="1"/>
+      <rect x="58" y="69" width="28" height="6" rx="3" fill="#0C0F17" stroke="url(#goldHighlightH)" stroke-width="0.8"/>
+      <!-- Bobbin wraps -->
+      <g stroke="url(#goldHighlightH)" stroke-width="0.8">
+        <line x1="62" y1="69" x2="62" y2="75"/>
+        <line x1="66" y1="69" x2="66" y2="75"/>
+        <line x1="70" y1="69" x2="70" y2="75"/>
+        <line x1="74" y1="69" x2="74" y2="75"/>
+        <line x1="78" y1="69" x2="78" y2="75"/>
+        <line x1="82" y1="69" x2="82" y2="75"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Brand Typography Lockup -->
+  <!-- Primary Brand Name: LINEN GALAXY -->
+  <text x="188" y="88" 
+        font-family="'Cormorant Garamond', 'Playfair Display', 'Cinzel', Georgia, serif" 
+        font-size="52" 
+        font-weight="700" 
+        letter-spacing="0.08em" 
+        fill="url(#goldGradH)">
+    LINEN GALAXY
+  </text>
+
+  <!-- Elegant Decorative Divider -->
+  <line x1="190" y1="108" x2="310" y2="108" stroke="url(#goldGradH)" stroke-width="1.2" opacity="0.8"/>
+  <polygon points="320,108 324,104 328,108 324,112" fill="url(#goldGradH)"/>
+  <circle cx="334" cy="108" r="1.5" fill="url(#goldGradH)"/>
+  <polygon points="340,108 344,104 348,108 344,112" fill="url(#goldGradH)"/>
+  <line x1="358" y1="108" x2="680" y2="108" stroke="url(#goldGradH)" stroke-width="1.2" opacity="0.8"/>
+
+  <!-- Subtitle: BY A S HANDLOOM • SILK CITY EST. 2007 -->
+  <text x="190" y="138" 
+        font-family="'Plus Jakarta Sans', -apple-system, sans-serif" 
+        font-size="14.5" 
+        font-weight="600" 
+        letter-spacing="0.22em" 
+        fill="#C5A059">
+    BY A S HANDLOOM
+  </text>
+  <circle cx="388" cy="133" r="2.5" fill="url(#goldGradH)"/>
+  <text x="404" y="138" 
+        font-family="'Plus Jakarta Sans', -apple-system, sans-serif" 
+        font-size="14.5" 
+        font-weight="600" 
+        letter-spacing="0.22em" 
+        fill="#C5A059">
+    SILK CITY EST. 2007
+  </text>
+</svg>
