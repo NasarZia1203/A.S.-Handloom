@@ -148,7 +148,7 @@ export default function Footer() {
           }}
         >
           <div>
-            &copy; {new Date().getFullYear()} — LINEN GALAXY BY A S HANDLOOM (EST. 2007) • ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} — A S HANDLOOM (EST. 2007) • ALL RIGHTS RESERVED.
           </div>
 
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
