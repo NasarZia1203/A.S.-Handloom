@@ -112,25 +112,6 @@ export default function Footer() {
 
           {/* Column 3: About The Enterprise */}
           <div>
-            <div
-              style={{
-                position: 'relative',
-                width: '70px',
-                height: '96px',
-                marginBottom: '16px',
-                background: 'transparent',
-                borderRadius: '8px',
-                overflow: 'hidden',
-              }}
-            >
-              <Image
-                src="/assets/images/as-handloom-logo.png"
-                alt="A S Handloom — Ancestral Pit-Loom Textile House"
-                fill
-                sizes="70px"
-                style={{ objectFit: 'contain' }}
-              />
-            </div>
             <h4
               style={{
                 fontSize: '12px',
