@@ -291,6 +291,7 @@ export default function Hero({ settings = DEFAULT_SITE_SETTINGS }: HeroProps) {
                   alt={`${shopName} — Pure Handloom Silks & Fine Linens`}
                   fill
                   priority
+                  unoptimized={Boolean(shopImg && shopImg.startsWith('data:'))}
                   sizes="(max-width: 768px) 90vw, 430px"
                   style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                 />

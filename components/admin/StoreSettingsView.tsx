@@ -1,8 +1,10 @@
 'use client'
+/* eslint-disable @next/next/no-img-element */
 
 import { useState, useEffect } from 'react'
 import type { SiteSettings, StoreOutlet } from '@/lib/types'
 import { DEFAULT_OUTLETS } from '@/lib/data/site-settings'
+import ImageUploaderWithCropper from './ImageUploaderWithCropper'
 
 export default function StoreSettingsView() {
   const [settings, setSettings] = useState<SiteSettings | null>(null)
@@ -376,50 +378,41 @@ export default function StoreSettingsView() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
-                  Hero Image URL / Path
-                </label>
-                <input
-                  type="text"
-                  placeholder="/assets/images/hero-model-saree.webp"
-                  value={settings.shop_image_url || ''}
-                  onChange={(e) => setSettings({ ...settings, shop_image_url: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px',
-                    borderRadius: '10px',
-                    border: '1.5px solid rgba(197, 160, 89, 0.3)',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                />
-                <span style={{ fontSize: '11px', color: '#6B7280' }}>
-                  Default: /assets/images/hero-model-saree.webp
-                </span>
-              </div>
+            <div style={{ marginBottom: '18px' }}>
+              <ImageUploaderWithCropper
+                value={settings.shop_image_url || '/assets/images/hero-model-saree.webp'}
+                onChange={(newUrl) => setSettings({ ...settings, shop_image_url: newUrl })}
+                label="Hero Section Showcase Photo"
+                description="Upload, crop, or replace the photo featured in the luxury arch container on the homepage."
+                initialAspectRatio="3:4"
+                enableCircleMask={false}
+                presets={[
+                  { label: 'Saree Model (Default)', url: '/assets/images/hero-model-saree.webp' },
+                  { label: 'A S Handloom Loom Logo', url: '/assets/images/as-handloom-logo.png' },
+                ]}
+                uploadFolder="ashandloom/hero"
+              />
+            </div>
 
-              <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
-                  Hero Physical Location Caption
-                </label>
-                <input
-                  type="text"
-                  placeholder="85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004"
-                  value={settings.shop_address || ''}
-                  onChange={(e) => setSettings({ ...settings, shop_address: e.target.value })}
-                  style={{
-                    width: '100%',
-                    padding: '12px 14px',
-                    borderRadius: '10px',
-                    border: '1.5px solid rgba(197, 160, 89, 0.3)',
-                    fontSize: '14px',
-                    outline: 'none',
-                  }}
-                />
-                <span style={{ fontSize: '11px', color: '#6B7280' }}>Location shown in hero caption</span>
-              </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
+                Hero Physical Location Caption
+              </label>
+              <input
+                type="text"
+                placeholder="85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004"
+                value={settings.shop_address || ''}
+                onChange={(e) => setSettings({ ...settings, shop_address: e.target.value })}
+                style={{
+                  width: '100%',
+                  padding: '12px 14px',
+                  borderRadius: '10px',
+                  border: '1.5px solid rgba(197, 160, 89, 0.3)',
+                  fontSize: '14px',
+                  outline: 'none',
+                }}
+              />
+              <span style={{ fontSize: '11px', color: '#6B7280' }}>Location shown in hero caption</span>
             </div>
           </div>
 
@@ -551,77 +544,22 @@ export default function StoreSettingsView() {
                         />
                       </div>
 
-                      {/* Outlet Image URL with Live Preview */}
-                      <div>
-                        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
-                          Shop Image URL / Path (Configurable)
-                        </label>
-                        <input
-                          type="text"
-                          value={outlet.image_url}
-                          onChange={(e) => updateOutletField(idx, 'image_url', e.target.value)}
-                          style={{
-                            width: '100%',
-                            padding: '10px 12px',
-                            borderRadius: '8px',
-                            border: '1px solid #D5CEBF',
-                            fontSize: '13px',
-                            background: '#FFFFFF',
-                            outline: 'none',
-                          }}
-                        />
-
-                        {/* Image Preview Box */}
-                        <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                          <div
-                            style={{
-                              position: 'relative',
-                              width: '64px',
-                              height: '48px',
-                              borderRadius: '6px',
-                              overflow: 'hidden',
-                              border: '1px solid #D5CEBF',
-                              background: '#EAE5DE',
-                            }}
-                          >
-                            <img
-                              src={outlet.image_url}
-                              alt="Shop Preview"
-                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                          </div>
-                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                            <button
-                              type="button"
-                              onClick={() => updateOutletField(idx, 'image_url', '/assets/images/as-handloom-logo.png')}
-                              style={{
-                                fontSize: '10px',
-                                padding: '3px 8px',
-                                borderRadius: '4px',
-                                border: '1px solid #C5A059',
-                                background: '#FFFDF9',
-                                cursor: 'pointer',
-                              }}
-                            >
-                              Logo Badge
-                            </button>
-                            <button
-                              type="button"
-                              onClick={() => updateOutletField(idx, 'image_url', '/assets/images/linen-galaxy-boutique.png')}
-                              style={{
-                                fontSize: '10px',
-                                padding: '3px 8px',
-                                borderRadius: '4px',
-                                border: '1px solid #C5A059',
-                                background: '#FFFDF9',
-                                cursor: 'pointer',
-                              }}
-                            >
-                              Boutique Store Photo
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                      {/* Outlet Image Uploader with Built-in Cropper & Remove */}
+                      <ImageUploaderWithCropper
+                        value={outlet.image_url}
+                        onChange={(newUrl) => updateOutletField(idx, 'image_url', newUrl)}
+                        label={`${outlet.badge || outlet.name || 'Shop'} Photo`}
+                        description="Upload from device or crop and adjust dimensions with round/rect preview."
+                        initialAspectRatio={idx === 1 ? '1:1' : '4:3'}
+                        enableCircleMask={true}
+                        defaultCirclePreview={idx === 1}
+                        presets={[
+                          { label: 'A S Handloom Loom Logo', url: '/assets/images/as-handloom-logo.png' },
+                          { label: 'Linen Galaxy Boutique Front', url: '/assets/images/linen-galaxy-boutique.png' },
+                          { label: 'White BG Badge', url: '/assets/images/as-handloom-logo-white-bg.png' },
+                        ]}
+                        uploadFolder="ashandloom/outlets"
+                      />
 
                       {/* Phone & Timings */}
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>

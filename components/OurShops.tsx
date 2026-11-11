@@ -120,6 +120,7 @@ export default function OurShops({
                     src={outlet.image_url || '/assets/images/as-handloom-logo-white-bg.png'}
                     alt={outlet.name}
                     fill
+                    unoptimized={Boolean(outlet.image_url && outlet.image_url.startsWith('data:'))}
                     sizes="(max-width: 768px) 100vw, 700px"
                     style={{
                       objectFit: isLinenGalaxy ? 'cover' : 'contain',
