@@ -4,13 +4,13 @@ import WhatsAppFloat from '@/components/WhatsAppFloat'
 import { getSiteSettings } from '@/lib/data/store-manager'
 
 export const metadata = {
-  title: 'Contact Us | Linen Galaxy by A S Handloom',
+  title: 'Contact Us | A S Handloom • Bhagalpur Pit-Loom House',
   description: 'Reach our flagship handloom store and wholesale depot in Bhagalpur, Bihar. WhatsApp ordering, wholesale inquiries, and customer service.',
 }
 
 export default function ContactPage() {
   const settings = getSiteSettings()
-  const shopName = settings.business_name || 'Linen Galaxy'
+  const shopName = settings.business_name || 'A S Handloom'
   const parentCompany = settings.parent_company || 'A S Handloom'
   const address = settings.shop_address || '85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004'
   const whatsapp = settings.whatsapp_number || '+91 97981 41494'

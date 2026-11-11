@@ -240,46 +240,62 @@ export default function Hero({ settings = DEFAULT_SITE_SETTINGS }: HeroProps) {
             </div>
           </div>
 
-          {/* Right Column: Editorial Hero Showcase (Round Boutique Showcase) */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          {/* Right Column: Editorial Hero Showcase (Abstract Architectural Shape Container) */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+            
+            {/* Subtle Luxury Ambient Glow */}
+            <div
+              style={{
+                position: 'absolute',
+                width: '95%',
+                height: '95%',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(250, 248, 245, 0) 70%)',
+                filter: 'blur(35px)',
+                zIndex: 0,
+              }}
+            />
+
+            {/* Asymmetrical Luxury Abstract Frame */}
             <div
               style={{
                 position: 'relative',
                 width: '100%',
-                maxWidth: '470px',
-                aspectRatio: '1 / 1',
-                borderRadius: '50%',
-                padding: '10px',
-                background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.4) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(197, 160, 89, 0.45) 100%)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.35)',
+                maxWidth: '430px',
+                aspectRatio: '1 / 1.34',
+                borderRadius: '240px 240px 42px 42px',
+                padding: '9px',
+                background: 'linear-gradient(145deg, rgba(212, 175, 55, 0.55) 0%, rgba(255, 255, 255, 0.98) 45%, rgba(197, 160, 89, 0.5) 100%)',
+                boxShadow: '0 24px 60px rgba(28, 25, 23, 0.12), 0 0 0 1px rgba(212, 175, 55, 0.4)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                zIndex: 1,
                 transition: 'transform 0.4s ease',
               }}
             >
-              {/* Perfectly Round Image Frame */}
+              {/* Inner Sculpted Arch Image Container */}
               <div
                 style={{
                   position: 'relative',
                   width: '100%',
                   height: '100%',
-                  borderRadius: '50%',
+                  borderRadius: '232px 232px 34px 34px',
                   overflow: 'hidden',
                   background: '#1C1917',
-                  boxShadow: 'inset 0 0 20px rgba(0, 0, 0, 0.35)',
+                  boxShadow: 'inset 0 0 25px rgba(0, 0, 0, 0.3)',
                 }}
               >
                 <Image
-                  src={shopImg}
-                  alt={`${shopName} — Flagship Handloom Boutique by ${parentCompany}`}
+                  src={shopImg.includes('linen-galaxy-boutique') ? '/assets/images/hero-model-saree.webp' : shopImg}
+                  alt={`${shopName} — Pure Handloom Silks & Fine Linens`}
                   fill
                   priority
-                  sizes="(max-width: 768px) 90vw, 470px"
-                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 90vw, 430px"
+                  style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                 />
 
-                {/* Floating Luxury Tag on Circle */}
+                {/* Floating Luxury Editorial Badge */}
                 <div
                   style={{
                     position: 'absolute',
@@ -287,43 +303,47 @@ export default function Hero({ settings = DEFAULT_SITE_SETTINGS }: HeroProps) {
                     left: '50%',
                     transform: 'translateX(-50%)',
                     background: 'rgba(28, 25, 23, 0.92)',
-                    backdropFilter: 'blur(10px)',
-                    padding: '7px 18px',
+                    backdropFilter: 'blur(12px)',
+                    padding: '8px 20px',
                     borderRadius: '50px',
                     fontSize: '11px',
                     fontWeight: 700,
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.14em',
                     textTransform: 'uppercase',
                     color: '#FAF8F5',
-                    border: '1px solid rgba(212, 175, 55, 0.55)',
-                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.3)',
+                    border: '1px solid rgba(212, 175, 55, 0.6)',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
                     whiteSpace: 'nowrap',
                     zIndex: 3,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
                   }}
                 >
-                  <i className="fas fa-store" style={{ color: '#D4AF37', marginRight: '6px' }}></i>
-                  {shopName} Boutique
+                  <span style={{ display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', background: '#D4AF37' }}></span>
+                  <span>{parentCompany} Master Weave</span>
                 </div>
               </div>
             </div>
 
-            {/* Showroom Details Caption */}
+            {/* Weave Heritage Details Caption */}
             <div
               style={{
                 marginTop: '18px',
                 textAlign: 'center',
-                maxWidth: '420px',
+                maxWidth: '430px',
+                zIndex: 1,
               }}
             >
-              <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C1917', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                {shopName} Flagship Boutique
+              <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C1917', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                Heirloom Bhagalpuri Pit-Loom Sarees
               </div>
               <div style={{ fontSize: '11.5px', color: '#7E736A', marginTop: '4px', lineHeight: 1.5 }}>
-                {shopAddress}
+                Authentic Desi & Tussar silk sarees with certified linen yarn & antique zari borders.
               </div>
-              <div style={{ marginTop: '10px' }}>
+              <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
                 <Link
-                  href="/contact"
+                  href="/products?category=saree"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -336,14 +356,38 @@ export default function Hero({ settings = DEFAULT_SITE_SETTINGS }: HeroProps) {
                     textDecoration: 'none',
                     padding: '6px 16px',
                     borderRadius: '50px',
+                    background: '#FFFFFF',
+                    border: '1px solid #ECE7E1',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.03)',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  <span>Explore Sarees</span>
+                  <i className="fas fa-arrow-right" style={{ fontSize: '9px' }}></i>
+                </Link>
+                <a
+                  href="#outlets"
+                  onClick={scrollTo('#outlets')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    color: '#5C5248',
+                    textDecoration: 'none',
+                    padding: '6px 16px',
+                    borderRadius: '50px',
                     background: '#FAF8F5',
                     border: '1px solid #ECE7E1',
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  <span>Visit Boutique Loft</span>
-                  <i className="fas fa-arrow-right" style={{ fontSize: '9px' }}></i>
-                </Link>
+                  <i className="fas fa-store" style={{ fontSize: '10px', color: '#B38728' }}></i>
+                  <span>Our Outlets</span>
+                </a>
               </div>
             </div>
           </div>

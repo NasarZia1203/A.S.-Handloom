@@ -216,7 +216,7 @@ export default function ProductForm({ initialValues, productId }: ProductFormPro
               {productId ? 'Edit Masterpiece Weave' : 'Register New Masterpiece'}
             </h2>
             <p style={{ fontSize: '13px', color: '#6B7280', margin: '2px 0 0' }}>
-              Linen Galaxy by A S Handloom • Authentic Bhagalpur Catalog
+              A S Handloom • Authentic Bhagalpur Pit-Loom Catalog
             </p>
           </div>
         </div>

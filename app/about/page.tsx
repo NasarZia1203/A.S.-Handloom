@@ -4,13 +4,13 @@ import WhatsAppFloat from '@/components/WhatsAppFloat'
 import { getSiteSettings } from '@/lib/data/store-manager'
 
 export const metadata = {
-  title: 'About Us | Linen Galaxy by A S Handloom',
+  title: 'About Us | A S Handloom • Bhagalpur Pit-Loom House',
   description: 'Ancestral handloom pit-loom weaving house since 2007. Sustainable pure linen and silk textiles from Bhagalpur, Bihar.',
 }
 
 export default function AboutPage() {
   const settings = getSiteSettings()
-  const shopName = settings.business_name || 'Linen Galaxy'
+  const shopName = settings.business_name || 'A S Handloom'
   const parentCompany = settings.parent_company || 'A S Handloom'
 
   return (

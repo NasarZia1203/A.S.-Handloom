@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     icon: [
       { url: '/browser-tab-logo.svg', type: 'image/svg+xml' },
       { url: '/icon.png', sizes: '512x512', type: 'image/png' },
-      { url: '/assets/images/linen-galaxy-logo-white-bg.png', sizes: '1024x1024', type: 'image/png' },
+      { url: '/assets/images/as-handloom-logo-white-bg.png', sizes: '1024x1024', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' },
     ],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],

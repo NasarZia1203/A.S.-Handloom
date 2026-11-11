@@ -49,7 +49,7 @@ interface AboutProps {
 
 export default function About({
   heading = 'From Ancestral Pit-Looms to Your Doorstep',
-  subheading = 'Nestled along the Ganges in Bhagalpur, Bihar, our pit-loom weaving lineage spans generations. At Linen Galaxy by A S Handloom, under the stewardship of MD RAZA ALAM, we preserve this venerable heritage by keeping master artisans and pure natural fibers at the heart of our craft.',
+  subheading = 'Nestled along the Ganges in Bhagalpur, Bihar, our pit-loom weaving lineage spans generations. At A S Handloom (incorporating our flagship retail boutique Linen Galaxy), under the stewardship of MD RAZA ALAM, we preserve this venerable heritage by keeping master artisans and pure natural fibers at the heart of our craft.',
 }: AboutProps = {}) {
   return (
     <section id="about" className="section-lux" style={{ background: '#FAF8F5', padding: '90px 0' }}>

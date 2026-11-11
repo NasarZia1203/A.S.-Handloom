@@ -5,7 +5,7 @@ import WhatsAppFloat from '@/components/WhatsAppFloat'
 import CatalogView from '@/components/CatalogView'
 
 export const metadata: Metadata = {
-  title: 'Catalog Collections | Linen Galaxy by A S Handloom',
+  title: 'Handloom Catalog Collections | A S Handloom',
   description:
     'Explore authentic handloom sarees, pure linen shirting/suiting yardage, Bhagalpuri DULL chadars, and gamchas direct from the ancestral looms in Bhagalpur, Bihar.',
 }

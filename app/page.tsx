@@ -8,6 +8,7 @@ import HeritageWeavesSection from '@/components/HeritageWeavesSection'
 import SuitSalwarSection from '@/components/SuitSalwarSection'
 import SaleSection from '@/components/SaleSection'
 import NDDSection from '@/components/NDDSection'
+import OurShops from '@/components/OurShops'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
@@ -104,6 +105,17 @@ export default function HomePage() {
                 subheading={section.subheading}
                 showPrices={settings.show_prices}
                 showWholesalePrices={settings.show_wholesale_prices}
+              />
+            )
+
+          case 'outlets':
+          case 'shops':
+            return (
+              <OurShops
+                key={section.id}
+                heading={section.heading}
+                subheading={section.subheading}
+                outlets={settings.outlets}
               />
             )
 

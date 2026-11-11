@@ -117,13 +117,28 @@ export interface HomepageSectionConfig {
   sort_order: number;
 }
 
+// Store Outlets & Physical Boutiques
+export interface StoreOutlet {
+  id: string;
+  name: string;
+  tagline?: string;
+  badge?: string;
+  address: string;
+  phone?: string;
+  whatsapp?: string;
+  hours?: string;
+  image_url: string;
+  map_url?: string;
+  is_active: boolean;
+}
+
 // Global Website Settings
 export interface SiteSettings {
   show_prices: boolean; // Website-wide price toggle!
   show_wholesale_prices: boolean;
   currency_symbol: string;
-  business_name: string; // e.g. "Linen Galaxy"
-  parent_company?: string; // e.g. "A S Handloom"
+  business_name: string; // "A S Handloom"
+  parent_company?: string; // "A S Handloom"
   shop_image_url?: string; // Hero shop photo url
   shop_address?: string; // Flagship shop location
   shop_description?: string; // Shop overview
@@ -132,5 +147,6 @@ export interface SiteSettings {
   whatsapp_number: string;
   gstin: string;
   homepage_sections: HomepageSectionConfig[];
+  outlets?: StoreOutlet[];
   policies?: Record<string, { title: string; content: string; last_updated?: string }>;
 }

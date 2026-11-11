@@ -40,6 +40,9 @@ export function readStoreState(): StoreState {
         settings: {
           ...DEFAULT_SITE_SETTINGS,
           ...(parsed.settings || {}),
+          outlets: Array.isArray(parsed.settings?.outlets) && parsed.settings.outlets.length > 0
+            ? parsed.settings.outlets
+            : DEFAULT_SITE_SETTINGS.outlets,
           homepage_sections: mergedSections.sort((a, b) => a.sort_order - b.sort_order),
           policies: {
             ...(DEFAULT_SITE_SETTINGS.policies || {}),

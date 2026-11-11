@@ -74,11 +74,11 @@ export default function AdminSidebar() {
             }}
           >
             <Image
-              src="/assets/images/linen-galaxy-logo-white-bg.png"
-              alt="Linen Galaxy"
+              src="/assets/images/as-handloom-logo.png"
+              alt="A S Handloom"
               fill
               sizes="46px"
-              style={{ objectFit: 'contain', padding: '4px' }}
+              style={{ objectFit: 'contain', padding: '3px' }}
             />
           </div>
           <div>
@@ -91,10 +91,10 @@ export default function AdminSidebar() {
                 lineHeight: 1.1,
               }}
             >
-              Linen Galaxy
+              A S Handloom
             </div>
             <div style={{ fontSize: '10.5px', color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, marginTop: '2px' }}>
-              By A S Handloom Admin
+              Master Admin Center
             </div>
           </div>
         </div>

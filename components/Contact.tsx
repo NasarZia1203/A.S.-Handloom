@@ -322,9 +322,9 @@ export default function Contact({
                 >
                   <div style={{ width: '100%', height: '100%', borderRadius: '50%', overflow: 'hidden', background: '#FFFFFF' }}>
                     <img
-                      src="/assets/images/linen-galaxy-logo-white-bg.png"
-                      alt="Linen Galaxy — House Of Pure Linen And Silk"
-                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '6px' }}
+                      src="/assets/images/as-handloom-logo.png"
+                      alt="A S Handloom — Ancestral Pit-Loom Textile House"
+                      style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '4px' }}
                     />
                   </div>
                 </div>
@@ -333,7 +333,7 @@ export default function Contact({
                     Artisanal Facility
                   </span>
                   <h3 style={{ fontSize: '1.35rem', margin: '4px 0 0', color: '#111827', fontWeight: 700 }}>
-                    Flagship Boutique & Weaving Loft
+                    A S Handloom Weaving Depot & Offices
                   </h3>
                 </div>
               </div>

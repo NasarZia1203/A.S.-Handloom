@@ -35,7 +35,7 @@ export default function AdminDashboardClient({ initialCounts }: AdminDashboardCl
     {
       label: 'Active on Storefront',
       value: initialCounts.active,
-      sub: 'Visible on Linen Galaxy',
+      sub: 'Visible on A S Handloom',
       icon: 'fas fa-check-circle',
       color: '#2D6A4F',
       bg: '#F0F7F2',
@@ -130,7 +130,7 @@ export default function AdminDashboardClient({ initialCounts }: AdminDashboardCl
                   textTransform: 'uppercase',
                 }}
               >
-                Flagship Boutique • Linen Galaxy
+                Flagship Enterprise • A S Handloom
               </span>
             </div>
             <h1 style={{
@@ -140,7 +140,7 @@ export default function AdminDashboardClient({ initialCounts }: AdminDashboardCl
               color: '#111827',
               margin: '4px 0 6px',
             }}>
-              Linen Galaxy Admin Center
+              A S Handloom Master Admin Center
             </h1>
             <p style={{ color: '#4B5563', fontSize: '0.92rem', margin: 0 }}>
               Manage wholesale rolls, retail sarees, Chadars, custom weave types, modular section layout, and global price controls.

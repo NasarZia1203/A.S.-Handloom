@@ -110,26 +110,24 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: About The Store */}
+          {/* Column 3: About The Enterprise */}
           <div>
             <div
               style={{
                 position: 'relative',
-                width: '68px',
-                height: '68px',
-                marginBottom: '14px',
-                background: '#FFFFFF',
+                width: '70px',
+                height: '96px',
+                marginBottom: '16px',
+                background: 'transparent',
                 borderRadius: '8px',
-                border: '1px solid #ECE7E1',
-                padding: '4px',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
+                overflow: 'hidden',
               }}
             >
               <Image
-                src="/assets/images/linen-galaxy-logo-white-bg.png"
-                alt="Linen Galaxy — House Of Pure Linen And Silk"
+                src="/assets/images/as-handloom-logo.png"
+                alt="A S Handloom — Ancestral Pit-Loom Textile House"
                 fill
-                sizes="68px"
+                sizes="70px"
                 style={{ objectFit: 'contain' }}
               />
             </div>
@@ -143,10 +141,10 @@ export default function Footer() {
                 marginBottom: '10px',
               }}
             >
-              About The Store
+              A S Handloom
             </h4>
             <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#6E6259', margin: '0 0 16px' }}>
-              Bhagalpur based online boutique and manufacturing house for finest handwoven sarees, scarves & pure linen fabrics. We prioritize quality and craftsmanship. Extending our support to fading centuries-old pit-loom weaving traditions and supporting our fellow weavers and artists. Join us in our journey as we unfold the finest stories straight out of our looms. Crafted with love. #InnativWeaver
+              Bhagalpur based ancestral pit-loom manufacturing house and textile enterprise (Est. 2007). We craft authentic Bhagalpuri Tussar & Desi silk sarees, certified high-count pure linen yardage, and heritage pit-loom weaves direct from our looms to retail connoisseurs and wholesale partners nationwide.
             </p>
             <div style={{ fontSize: '12.5px', color: '#1C1917', fontWeight: 600 }}>
               Direct WhatsApp Orders: <a href="https://wa.me/919798141494" target="_blank" rel="noopener noreferrer" style={{ color: '#047857', textDecoration: 'none' }}>+91 97981 41494</a>

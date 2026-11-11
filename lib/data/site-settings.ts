@@ -1,10 +1,10 @@
-import type { SiteSettings, HomepageSectionConfig } from '@/lib/types'
+import type { SiteSettings, HomepageSectionConfig, StoreOutlet } from '@/lib/types'
 
 export const DEFAULT_HOMEPAGE_SECTIONS: HomepageSectionConfig[] = [
   {
     id: 'hero',
-    heading: 'Linen Galaxy — The Handloom Textile Store',
-    subheading: 'A Flagship Store by A S Handloom • Bhagalpur Silk City, Bihar',
+    heading: 'A S Handloom — Ancestral Pit-Loom Textile House',
+    subheading: 'Authentic Bhagalpuri Pure Silk & Certified Linen Masterpieces • Estd. 2007',
     is_enabled: true,
     sort_order: 1,
   },
@@ -62,18 +62,25 @@ export const DEFAULT_HOMEPAGE_SECTIONS: HomepageSectionConfig[] = [
     sort_order: 8,
   },
   {
-    id: 'about',
-    heading: 'The 200-Year Pit-Loom Lineage',
-    subheading: 'Linen Galaxy by A S Handloom • Under MD RAZA ALAM (Proprietor)',
+    id: 'outlets',
+    heading: 'Our Shops & Outlets',
+    subheading: 'Experience authentic Bhagalpuri pit-loom craftsmanship in person at our flagship locations',
     is_enabled: true,
     sort_order: 9,
+  },
+  {
+    id: 'about',
+    heading: 'The 200-Year Pit-Loom Lineage',
+    subheading: 'A S Handloom Weaving House • Under MD RAZA ALAM (Proprietor)',
+    is_enabled: true,
+    sort_order: 10,
   },
   {
     id: 'contact',
     heading: 'Online Order & Wholesale Inquiries',
     subheading: 'Direct Tracked Doorstep Delivery Across India & Global Cargo',
     is_enabled: true,
-    sort_order: 10,
+    sort_order: 11,
   },
 ]
 
@@ -167,19 +174,49 @@ Any legal disputes arising from transactions shall be subject to the exclusive j
   },
 }
 
+export const DEFAULT_OUTLETS: StoreOutlet[] = [
+  {
+    id: 'as-handloom-main',
+    name: 'A S Handloom — Main Office & Weaving Depot',
+    tagline: 'Ancestral Pit-Loom Manufacturing Hub & Wholesale Sampling Depot',
+    badge: 'Main Office & Depot',
+    address: '85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004',
+    phone: '+91 9430908657',
+    whatsapp: '+91 9798141494',
+    hours: 'Monday – Saturday: 9:30 AM – 8:00 PM',
+    image_url: '/assets/images/as-handloom-logo.png',
+    map_url: 'https://maps.google.com/?q=85+M+T+N+Ghosh+Road+Hasnabad+Champanagar+Bhagalpur+Bihar+812004',
+    is_active: true,
+  },
+  {
+    id: 'linen-galaxy-boutique',
+    name: 'Linen Galaxy — Flagship Retail Boutique',
+    tagline: 'House of Pure Linen & Silk • Designer Handloom Showcase',
+    badge: 'Retail Boutique',
+    address: '85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004',
+    phone: '+91 9097914885',
+    whatsapp: '+91 8210303152',
+    hours: 'Monday – Sunday: 10:00 AM – 9:00 PM',
+    image_url: '/assets/images/linen-galaxy-boutique.png',
+    map_url: 'https://maps.google.com/?q=Linen+Galaxy+Champanagar+Bhagalpur',
+    is_active: true,
+  },
+]
+
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   show_prices: true,
   show_wholesale_prices: true,
   currency_symbol: '₹',
-  business_name: 'Linen Galaxy',
+  business_name: 'A S Handloom',
   parent_company: 'A S Handloom',
-  shop_image_url: '/assets/images/linen-galaxy-boutique.png',
+  shop_image_url: '/assets/images/hero-model-saree.webp',
   shop_address: '85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004',
-  shop_description: 'Flagship Handloom & Linen Textile Store in the Silk City of India. Retail boutique & wholesale depot for pure sarees, linen shirting/suiting, and heritage pit-loom fabrics.',
+  shop_description: 'Ancestral Pit-Loom Handloom & Silk Manufacturing House in the Silk City of India (Est. 2007). Direct weaver pricing for authentic Bhagalpuri silk sarees, pure linen shirting/suiting, and heritage handloom weaves.',
   proprietor: 'MD RAZA ALAM',
   contact_phone: '+91 9430908657',
   whatsapp_number: '+91 9798141494',
   gstin: '10AJXPA6956B1ZD',
   homepage_sections: DEFAULT_HOMEPAGE_SECTIONS,
+  outlets: DEFAULT_OUTLETS,
   policies: DEFAULT_POLICIES,
 }

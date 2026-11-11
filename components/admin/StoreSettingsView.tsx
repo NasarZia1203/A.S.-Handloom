@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { SiteSettings } from '@/lib/types'
+import type { SiteSettings, StoreOutlet } from '@/lib/types'
+import { DEFAULT_OUTLETS } from '@/lib/data/site-settings'
 
 export default function StoreSettingsView() {
   const [settings, setSettings] = useState<SiteSettings | null>(null)
@@ -311,21 +312,21 @@ export default function StoreSettingsView() {
             </div>
           </div>
 
-          {/* Shop Image & Hero Section Details */}
+          {/* Hero Section Abstract Showcase Image */}
           <div style={{ borderTop: '1px solid rgba(197, 160, 89, 0.2)', paddingTop: '18px' }}>
             <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#111827', marginBottom: '16px' }}>
-              <i className="fas fa-store" style={{ color: '#D4AF37', marginRight: '8px' }}></i>
-              Linen Galaxy Boutique Photo & Round Hero Showcase
+              <i className="fas fa-image" style={{ color: '#D4AF37', marginRight: '8px' }}></i>
+              Hero Section Abstract Silhouette Showcase
             </h4>
 
-            {/* Round Boutique Showcase Preview */}
+            {/* Abstract Arch Showcase Preview */}
             <div style={{ display: 'flex', gap: '22px', alignItems: 'center', marginBottom: '22px', padding: '16px', background: '#FAF9F6', borderRadius: '16px', border: '1px solid #ECE7E1' }}>
               <div
                 style={{
                   position: 'relative',
-                  width: '100px',
-                  height: '100px',
-                  borderRadius: '50%',
+                  width: '90px',
+                  height: '120px',
+                  borderRadius: '60px 60px 14px 14px',
                   padding: '3px',
                   background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.5) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(197, 160, 89, 0.5) 100%)',
                   boxShadow: '0 6px 18px rgba(212, 175, 55, 0.25), 0 0 0 1px rgba(212, 175, 55, 0.4)',
@@ -337,14 +338,14 @@ export default function StoreSettingsView() {
                     position: 'relative',
                     width: '100%',
                     height: '100%',
-                    borderRadius: '50%',
+                    borderRadius: '56px 56px 10px 10px',
                     overflow: 'hidden',
                     background: '#1C1917',
                   }}
                 >
                   <img
-                    src={settings.shop_image_url || '/assets/images/linen-galaxy-boutique.png'}
-                    alt="Linen Galaxy Boutique Preview"
+                    src={settings.shop_image_url || '/assets/images/hero-model-saree.webp'}
+                    alt="Hero Showcase Preview"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </div>
@@ -364,13 +365,13 @@ export default function StoreSettingsView() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  Round Boutique Hero Preview
+                  Abstract Shape Hero Preview
                 </span>
                 <div style={{ fontSize: '13px', fontWeight: 700, color: '#111827', marginTop: '4px' }}>
-                  Linen Galaxy Flagship Boutique
+                  A S Handloom — Handcrafted Saree Model Showcase
                 </div>
                 <p style={{ fontSize: '12px', color: '#6B7280', margin: '2px 0 0', maxWidth: '440px' }}>
-                  Cropped in a circular frame with gold glow. Appears on the homepage Hero section as the flagship boutique showcase.
+                  Framed in an architectural sculpted arch with gold aura. Appears on the homepage Hero section as the primary textile showcase.
                 </p>
               </div>
             </div>
@@ -378,11 +379,11 @@ export default function StoreSettingsView() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
               <div>
                 <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
-                  Shop Image URL / Path (Hero Section)
+                  Hero Image URL / Path
                 </label>
                 <input
                   type="text"
-                  placeholder="/assets/images/linen-galaxy-boutique.png"
+                  placeholder="/assets/images/hero-model-saree.webp"
                   value={settings.shop_image_url || ''}
                   onChange={(e) => setSettings({ ...settings, shop_image_url: e.target.value })}
                   style={{
@@ -395,17 +396,17 @@ export default function StoreSettingsView() {
                   }}
                 />
                 <span style={{ fontSize: '11px', color: '#6B7280' }}>
-                  Hero round shop photo. Default: /assets/images/linen-galaxy-boutique.png
+                  Default: /assets/images/hero-model-saree.webp
                 </span>
               </div>
 
               <div>
                 <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
-                  Shop Physical Address
+                  Hero Physical Location Caption
                 </label>
                 <input
                   type="text"
-                  placeholder="Hasnabad, Champanagar, Bhagalpur, Bihar 812004"
+                  placeholder="85 M T N Ghosh Road, Hasnabad, Champanagar, Bhagalpur, Bihar 812004"
                   value={settings.shop_address || ''}
                   onChange={(e) => setSettings({ ...settings, shop_address: e.target.value })}
                   style={{
@@ -417,30 +418,257 @@ export default function StoreSettingsView() {
                     outline: 'none',
                   }}
                 />
-                <span style={{ fontSize: '11px', color: '#6B7280' }}>Location shown in the hero boutique showcase</span>
+                <span style={{ fontSize: '11px', color: '#6B7280' }}>Location shown in hero caption</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Outlets Configuration Section */}
+          <div style={{ borderTop: '1px solid rgba(197, 160, 89, 0.2)', paddingTop: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div>
+                <h4 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#111827', margin: 0 }}>
+                  <i className="fas fa-store-alt" style={{ color: '#D4AF37', marginRight: '8px' }}></i>
+                  Our Shops & Outlets Configuration
+                </h4>
+                <p style={{ fontSize: '12px', color: '#6B7280', margin: '4px 0 0' }}>
+                  Configure physical addresses and showcase photos for your Main Office depot and Linen Galaxy boutique.
+                </p>
               </div>
             </div>
 
-            <div style={{ marginTop: '16px' }}>
-              <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, color: '#374151', marginBottom: '6px' }}>
-                Shop Description / Tagline
-              </label>
-              <textarea
-                rows={2}
-                placeholder="Flagship handloom textile store in Bhagalpur Silk City..."
-                value={settings.shop_description || ''}
-                onChange={(e) => setSettings({ ...settings, shop_description: e.target.value })}
-                style={{
-                  width: '100%',
-                  padding: '12px 14px',
-                  borderRadius: '10px',
-                  border: '1.5px solid rgba(197, 160, 89, 0.3)',
-                  fontSize: '14px',
-                  outline: 'none',
-                  resize: 'vertical',
-                }}
-              />
-            </div>
+            {(() => {
+              const currentOutlets = settings.outlets && settings.outlets.length > 0 ? settings.outlets : DEFAULT_OUTLETS
+
+              const updateOutletField = (idx: number, field: keyof StoreOutlet, value: any) => {
+                const updated = [...currentOutlets]
+                updated[idx] = { ...updated[idx], [field]: value }
+                setSettings({ ...settings, outlets: updated })
+              }
+
+              return (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+                  {currentOutlets.slice(0, 2).map((outlet, idx) => (
+                    <div
+                      key={outlet.id || idx}
+                      style={{
+                        padding: '20px',
+                        background: '#FAF9F6',
+                        borderRadius: '16px',
+                        border: '1.5px solid #E5DFD5',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '14px',
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span
+                          style={{
+                            background: idx === 0 ? '#1C1917' : '#B38728',
+                            color: '#FFFFFF',
+                            padding: '4px 12px',
+                            borderRadius: '50px',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            letterSpacing: '0.08em',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          {idx === 0 ? 'Outlet 1 (Main Office)' : 'Outlet 2 (Boutique)'}
+                        </span>
+
+                        <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 600, color: '#374151' }}>
+                          <input
+                            type="checkbox"
+                            checked={outlet.is_active !== false}
+                            onChange={(e) => updateOutletField(idx, 'is_active', e.target.checked)}
+                          />
+                          Active
+                        </label>
+                      </div>
+
+                      {/* Outlet Name */}
+                      <div>
+                        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                          Shop / Outlet Name
+                        </label>
+                        <input
+                          type="text"
+                          value={outlet.name}
+                          onChange={(e) => updateOutletField(idx, 'name', e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '10px 12px',
+                            borderRadius: '8px',
+                            border: '1px solid #D5CEBF',
+                            fontSize: '13px',
+                            background: '#FFFFFF',
+                            outline: 'none',
+                          }}
+                        />
+                      </div>
+
+                      {/* Outlet Tagline */}
+                      <div>
+                        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                          Tagline / Subheading
+                        </label>
+                        <input
+                          type="text"
+                          value={outlet.tagline || ''}
+                          onChange={(e) => updateOutletField(idx, 'tagline', e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '10px 12px',
+                            borderRadius: '8px',
+                            border: '1px solid #D5CEBF',
+                            fontSize: '13px',
+                            background: '#FFFFFF',
+                            outline: 'none',
+                          }}
+                        />
+                      </div>
+
+                      {/* Outlet Address */}
+                      <div>
+                        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                          Physical Address (Configurable)
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={outlet.address}
+                          onChange={(e) => updateOutletField(idx, 'address', e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '10px 12px',
+                            borderRadius: '8px',
+                            border: '1px solid #D5CEBF',
+                            fontSize: '13px',
+                            background: '#FFFFFF',
+                            outline: 'none',
+                            resize: 'vertical',
+                          }}
+                        />
+                      </div>
+
+                      {/* Outlet Image URL with Live Preview */}
+                      <div>
+                        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                          Shop Image URL / Path (Configurable)
+                        </label>
+                        <input
+                          type="text"
+                          value={outlet.image_url}
+                          onChange={(e) => updateOutletField(idx, 'image_url', e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '10px 12px',
+                            borderRadius: '8px',
+                            border: '1px solid #D5CEBF',
+                            fontSize: '13px',
+                            background: '#FFFFFF',
+                            outline: 'none',
+                          }}
+                        />
+
+                        {/* Image Preview Box */}
+                        <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div
+                            style={{
+                              position: 'relative',
+                              width: '64px',
+                              height: '48px',
+                              borderRadius: '6px',
+                              overflow: 'hidden',
+                              border: '1px solid #D5CEBF',
+                              background: '#EAE5DE',
+                            }}
+                          >
+                            <img
+                              src={outlet.image_url}
+                              alt="Shop Preview"
+                              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                          </div>
+                          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                            <button
+                              type="button"
+                              onClick={() => updateOutletField(idx, 'image_url', '/assets/images/as-handloom-logo.png')}
+                              style={{
+                                fontSize: '10px',
+                                padding: '3px 8px',
+                                borderRadius: '4px',
+                                border: '1px solid #C5A059',
+                                background: '#FFFDF9',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              Logo Badge
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => updateOutletField(idx, 'image_url', '/assets/images/linen-galaxy-boutique.png')}
+                              style={{
+                                fontSize: '10px',
+                                padding: '3px 8px',
+                                borderRadius: '4px',
+                                border: '1px solid #C5A059',
+                                background: '#FFFDF9',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              Boutique Store Photo
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Phone & Timings */}
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '11.5px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                            Phone / WhatsApp
+                          </label>
+                          <input
+                            type="text"
+                            value={outlet.phone || ''}
+                            onChange={(e) => updateOutletField(idx, 'phone', e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '8px 10px',
+                              borderRadius: '6px',
+                              border: '1px solid #D5CEBF',
+                              fontSize: '12px',
+                              background: '#FFFFFF',
+                              outline: 'none',
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '11.5px', fontWeight: 700, color: '#374151', marginBottom: '4px' }}>
+                            Opening Hours
+                          </label>
+                          <input
+                            type="text"
+                            value={outlet.hours || ''}
+                            onChange={(e) => updateOutletField(idx, 'hours', e.target.value)}
+                            style={{
+                              width: '100%',
+                              padding: '8px 10px',
+                              borderRadius: '6px',
+                              border: '1px solid #D5CEBF',
+                              fontSize: '12px',
+                              background: '#FFFFFF',
+                              outline: 'none',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )
+            })()}
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>

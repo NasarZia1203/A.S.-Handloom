@@ -91,7 +91,8 @@ export default function Navbar() {
   ]
 
   const rightNavItems = [
-    { href: '/linengalaxy#wholesale', label: 'WHOLESALE' },
+    { href: '/#outlets', label: 'OUTLETS' },
+    { href: '/#wholesale', label: 'WHOLESALE' },
     { href: '/contact', label: 'CONTACT', isRoute: true },
     { href: '/admin/login', label: 'LOGIN', isRoute: true },
   ]
@@ -234,7 +235,7 @@ export default function Navbar() {
           {/* Center Column: Text-Only Luxury Typography (No Image Logo) */}
           <div style={{ textAlign: 'center', flexShrink: 0, padding: '0 16px' }}>
             <Link
-              href="/linengalaxy"
+              href="/"
               style={{
                 textDecoration: 'none',
                 display: 'flex',
@@ -245,19 +246,19 @@ export default function Navbar() {
               <span
                 style={{
                   fontFamily: 'var(--font-heading), "Playfair Display", Georgia, serif',
-                  fontSize: '1.45rem',
+                  fontSize: '1.48rem',
                   fontWeight: 700,
-                  letterSpacing: '0.18em',
+                  letterSpacing: '0.16em',
                   color: '#1C1917',
                   textTransform: 'uppercase',
                   lineHeight: 1.1,
                 }}
               >
-                LINEN GALAXY
+                A S HANDLOOM
               </span>
               <span
                 style={{
-                  fontSize: '0.6rem',
+                  fontSize: '0.58rem',
                   letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   color: '#8A7B6D',
@@ -265,7 +266,7 @@ export default function Navbar() {
                   marginTop: '3px',
                 }}
               >
-                HOUSE OF PURE LINEN AND SILK
+                PIT-LOOM HOUSE • ESTD. 2007 • BHAGALPUR
               </span>
             </Link>
           </div>
@@ -691,10 +692,10 @@ export default function Navbar() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  LINEN GALAXY
+                  A S HANDLOOM
                 </div>
                 <div style={{ fontSize: '0.52rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8A7B6D', marginTop: '2px' }}>
-                  HOUSE OF PURE LINEN AND SILK
+                  PIT-LOOM HOUSE • ESTD. 2007 • BHAGALPUR
                 </div>
               </div>
               <button
@@ -708,12 +709,20 @@ export default function Navbar() {
             {/* Navigation Tree */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <Link
-                href="/linengalaxy"
+                href="/"
                 onClick={() => setMenuOpen(false)}
                 style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#1C1917', textDecoration: 'none' }}
               >
                 Home
               </Link>
+
+              <a
+                href="#outlets"
+                onClick={handleNavClick}
+                style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#1C1917', textDecoration: 'none' }}
+              >
+                Our Shops & Outlets
+              </a>
 
               {/* Mobile Expandable SHOP Accordion */}
               <div>
