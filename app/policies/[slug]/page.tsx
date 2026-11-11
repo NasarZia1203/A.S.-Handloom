@@ -60,7 +60,7 @@ export default async function PolicyPage({
           
           {/* Breadcrumb Navigation */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: '#8A7B6D', marginBottom: '24px' }}>
-            <Link href="/linengalaxy" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
+            <Link href="/" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
               Home
             </Link>
             <span>/</span>

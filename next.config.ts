@@ -54,9 +54,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/linengalaxy',
-        permanent: false,
+        source: '/linengalaxy',
+        destination: '/',
+        permanent: true,
       },
     ]
   },

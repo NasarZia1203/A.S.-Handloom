@@ -66,16 +66,20 @@ export default function Navbar() {
   const handleNavClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       const href = e.currentTarget.getAttribute('href')
-      if (href && href.startsWith('#')) {
-        if (typeof window !== 'undefined' && !window.location.pathname.includes('/linengalaxy') && window.location.pathname !== '/') {
-          window.location.href = `/linengalaxy${href}`
-          return
-        }
-        e.preventDefault()
-        const target = document.querySelector(href)
-        if (target) {
-          const offsetTop = (target as HTMLElement).offsetTop - 85
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' })
+      if (href) {
+        const hash = href.includes('#') ? '#' + href.split('#')[1] : null
+        if (hash) {
+          if (typeof window !== 'undefined') {
+            if (window.location.pathname !== '/') {
+              return
+            }
+            e.preventDefault()
+            const target = document.querySelector(hash)
+            if (target) {
+              const offsetTop = (target as HTMLElement).offsetTop - 85
+              window.scrollTo({ top: offsetTop, behavior: 'smooth' })
+            }
+          }
         }
       }
       setShopMegaOpen(false)
@@ -283,7 +287,7 @@ export default function Navbar() {
             }}
           >
             {rightNavItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={handleNavClick}
@@ -305,7 +309,7 @@ export default function Navbar() {
                 }}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
 
             {/* Clean Minimalist WhatsApp Button */}
@@ -794,20 +798,20 @@ export default function Navbar() {
               >
                 Clearance & Flash Sale
               </Link>
-              <a
-                href="/linengalaxy#ndd"
+              <Link
+                href="/#ndd"
                 onClick={handleNavClick}
                 style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#047857', textDecoration: 'none' }}
               >
                 Next Day Dispatch (NDD)
-              </a>
-              <a
-                href="/linengalaxy#wholesale"
+              </Link>
+              <Link
+                href="/#wholesale"
                 onClick={handleNavClick}
                 style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#1C1917', textDecoration: 'none' }}
               >
                 Wholesale Manufacturing
-              </a>
+              </Link>
               <Link
                 href="/about"
                 onClick={() => setMenuOpen(false)}

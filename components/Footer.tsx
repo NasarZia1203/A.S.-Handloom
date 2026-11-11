@@ -46,7 +46,7 @@ export default function Footer() {
                 { label: 'Bhagalpuri DULL Chadar', href: '/products?category=chadar' },
                 { label: 'Next Day Dispatch (NDD)', href: '/products?ndd=true' },
                 { label: 'Clearance & Flash Sale', href: '/products?sale=true' },
-                { label: 'Wholesale Manufacturing', href: '/linengalaxy#wholesale' },
+                { label: 'Wholesale Manufacturing', href: '/#wholesale' },
                 { label: 'About Us', href: '/about' },
                 { label: 'Contact Us', href: '/contact' },
               ].map((link, i) => (

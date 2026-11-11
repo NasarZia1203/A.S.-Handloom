@@ -156,7 +156,7 @@ All customer records are securely stored and accessible only to authorized staff
   'terms-of-service': {
     title: 'Terms of Service',
     last_updated: 'November 2026',
-    content: `Welcome to Linen Galaxy. By accessing our website (ashandloom.in/linengalaxy) and ordering our handcrafted handloom textiles, you agree to these Terms of Service.
+    content: `Welcome to A S Handloom. By accessing our website (ashandloom.in) and ordering our handcrafted handloom textiles, you agree to these Terms of Service.
 
 1. Artisan Production:
 All items listed are crafted by handloom weavers. Specifications such as GSM, weight, and meterage are measured with care but may carry minor artisan tolerances.

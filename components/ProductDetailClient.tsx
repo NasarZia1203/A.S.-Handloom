@@ -86,7 +86,7 @@ Please share roll/bundle availability and commercial invoice terms.`
           gap: '8px',
         }}
       >
-        <Link href="/linengalaxy" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
+        <Link href="/" style={{ color: '#8A7B6D', textDecoration: 'none' }}>
           HOME
         </Link>
         <span>/</span>
